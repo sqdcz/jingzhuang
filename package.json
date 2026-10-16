@@ -2,7 +2,7 @@
   "name": "jingzhuang",
   "productName": "净装",
   "version": "1.0.0",
-  "description": "AI 软件净装助手 - 找官网、验安全、干净装",
+  "description": "Windows 软件官方来源查询与安装包安全校验工具",
   "main": "src/main/index.js",
   "author": "衰气的船只",
   "license": "MIT",

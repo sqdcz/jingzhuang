@@ -150,3 +150,184 @@ CI 里用 `node scripts/store-submit.js submit --yes` 跳过确认。
 - 商店版与 GitHub 上的侧载版共用同一套代码，`storeMode` 是唯一开关
 - 更新版本：改 `package.json` 的 `version` → `npm run dist:appx` → `npm run store:submit`
 - 认证失败时脚本会打印最终状态，去合作伙伴中心看详细报告
+
+---
+
+## 10. 提交表单填写指引（产品声明 / 认证说明）
+
+合作伙伴中心「提交选项 → 产品声明」和「认证说明」两处。**声明要如实填**，勾了等于向微软承诺，认证阶段可能被要求提供佐证材料。
+
+### 10.1 产品声明（四个复选框）
+
+| 声明项 | 是否勾选 | 理由 |
+|---|---|---|
+| 此产品依赖于非 Microsoft 驱动程序或 NT 服务 | **不勾** | 净装不安装驱动、不注册 NT 服务、不注入其他进程。内置的 Geek Uninstaller 是普通应用，不是驱动或服务 |
+| 此产品已经过测试，符合辅助功能准则 | **不勾** | 未做过无障碍专项测试（屏幕阅读器、键盘全流程导航、对比度等）。勾了可能被要求提交 Accessibility Conformance Report。**除非真做了测试，否则不要勾** |
+| 本产品支持触笔输入 | **不勾** | 本产品为键鼠工具，无笔迹输入相关功能 |
+| 本产品整合了生成式 AI 功能 | **勾选** | 本产品确实调用大语言模型：解析用户需求、判定候选来源、生成安装建议文本。虽由用户自带密钥、且结果为中间数据，但功能客观存在。<br>**隐瞒的风险远大于披露**——认证人员打开「设置 → AI 服务」即可见。如实勾选属合规披露 |
+
+> 若勾了生成式 AI 一项，商店可能对产品附加 AI 相关标注。我们的隐私政策已完整披露 AI 数据流向（第 2.2.2 条），两者一致，不会自相矛盾。
+
+### 10.2 认证说明（现成文本，直接复制）
+
+> 该字段仅认证人员可见，用户看不到。中英双语是稳妥做法（认证团队可能不读中文）。
+
+**中文版：**
+
+```
+【产品定位】
+本应用为「软件官方来源查询与安装包安全校验工具」。商店版本仅提供三项能力：
+来源检索、安装包数字签名与哈希完整性校验、安装配置建议。
+商店版本不代用户执行任何下载的内容——不启动安装程序、不启动外部卸载工具，
+因此不涉及「下载并执行外部代码」。
+
+【无需测试账户】
+下列用例均无需登录、无需任何配置即可验证（每条对应一条不同的功能分支）：
+
+1. 在搜索框输入「curl」，点击搜索
+   → 该名称不在任何内置名单中，将转由 Windows 程序包管理器官方索引检索，
+     返回官方下载地址与官方 SHA-256，自动下载并比对哈希，
+     随后给出安装建议卡片（应为「哈希与官方清单完全一致」）。
+
+2. 输入「微信」，点击搜索
+   → 命中内置白名单，直接给出官方下载地址。
+
+3. 输入「2345好压」，点击搜索
+   → 命中内置风险软件清单，展示具体风险说明与开源替代方案，
+     并设有等待确认环节后方可继续。
+
+4. 输入「kms激活」，点击搜索
+   → 命中内置恶意软件清单，予以拦截，需输入预设口令方可继续
+     （该口令由程序主进程校验，用于防止误装）。
+
+> 说明：内置名单是「未命中才继续往下查」的优先链路。
+> 像 7-Zip、微信这类常见软件都在白名单内，检索时会直接命中名单，
+> 不会走索引链路——这是设计如此，不是功能缺失。
+
+【关于可选的 AI 功能】
+应用可选接入第三方大语言模型（OpenAI 兼容协议），接口地址与密钥由用户自行填写。
+出于成本与安全考虑，我们不向认证团队提供测试密钥。
+该功能为可选增强项：不配置时，上述用例 1—4 的功能完全不受影响。
+如需验证 AI 流程，可在「设置 → AI 服务」中填写任意兼容服务商的密钥。
+
+【网络要求】
+验证过程需要联网：应用会访问 Windows 程序包管理器官方索引，
+以及所查询软件的官方下载站点。
+
+【权限说明】
+本版本未申请 broadFileSystemAccess 等受限能力。
+下载的安装包默认保存到应用自身的私有目录；
+用户也可在设置中指定其他目录，届时由系统文件选择器向用户确认授权。
+
+【已下载安装包的处理方式】
+商店版本不会自动运行已下载的安装包。
+用户在结果卡片中只能选择「打开所在文件夹」，是否安装由用户自行决定。
+这是为符合商店政策而做的有意设计，并非功能缺失。
+```
+
+**English version（建议一并附上）：**
+
+```
+Product positioning
+This app is a software source lookup and installer verification tool. The Store build
+provides only three capabilities: official source lookup, digital signature and
+SHA-256 integrity verification of installers, and installation guidance.
+The Store build never executes downloaded content — it does not launch installers and
+does not start any external uninstaller. It therefore does not download or execute
+external code.
+
+No test account required
+All cases below can be verified with no sign-in and no configuration
+(each one exercises a different functional branch):
+
+1. Search "curl" and click search
+   -> Not present in any built-in list, so it is resolved via the Windows Package Manager
+      official index; the official download URL and official SHA-256 are shown, the package
+      is downloaded and the hash compared automatically, then an installation guidance card
+      is displayed (it should report a full match with the official hash).
+
+2. Search "微信" (WeChat) and click search
+   -> Matched against the built-in allow-list; the official download URL is shown.
+
+3. Search "2345好压" and click search
+   -> Matched against the built-in risk list; specific risk details and open-source
+      alternatives are shown, with a confirmation delay before proceeding.
+
+4. Search "kms激活" and click search
+   -> Matched against the built-in malware list and blocked; a preset passphrase is
+      required to proceed (validated in the main process, not in the UI layer).
+
+Note: the built-in lists are a "checked first, continue only on miss" chain.
+Well-known software such as 7-Zip or WeChat is already in the allow-list and will be
+resolved directly without reaching the index lookup - this is by design.
+
+Optional AI feature
+The app can optionally connect to a third-party large language model (OpenAI-compatible
+API). The endpoint and API key are supplied by the user. For cost and security reasons we
+do not provide a test key. This is an optional enhancement: all cases 1-4 above work
+without it. To verify the AI flow, enter any compatible provider's key under
+Settings -> AI Service.
+
+Network access required
+The app accesses the Windows Package Manager official index and the official download
+sites of the software being looked up.
+
+Capabilities
+This build does not request broadFileSystemAccess or any other restricted capability.
+Downloaded installers are saved to the app's own private folder by default; the user may
+choose another folder, in which case Windows confirms the authorization through the
+system file picker.
+
+Handling of downloaded installers
+The Store build never runs a downloaded installer. From the result card the user can only
+choose "Open containing folder"; whether to install is entirely the user's decision.
+This is an intentional design for Store policy compliance, not a missing feature.
+```
+
+### 10.3 系统要求（可以直接照抄）
+
+关键原则：**商店表单里填的要求，必须和包内清单声明的一致**，否则会出现「商店说支持、装上却打不开」。
+包内真实声明从 `AppxManifest.xml` 读（可用解压工具打开 `.appx` 查看）：
+
+```xml
+<Dependencies>
+  <TargetDeviceFamily Name="Windows.Desktop"
+    MinVersion="10.0.17763.0"          <!-- Windows 10 版本 1809 -->
+    MaxVersionTested="10.0.19045.0" /> <!-- 实际测试环境 Windows 10 22H2 -->
+</Dependencies>
+```
+
+| 字段 | 填写内容 | 依据 |
+|---|---|---|
+| 操作系统 | **Windows 10 版本 1809（内部版本 17763）或更高**，含 Windows 11 | 与包内 `MinVersion` 一致。Electron 33 / Chromium 130 已不支持 Win7/8/8.1，1809 是稳妥下限 |
+| 体系结构 | **x64** | 包内 `ProcessorArchitecture="x64"`，仅提供 64 位包 |
+| 内存 | 最低 **4 GB** / 推荐 **8 GB** | Electron 内置 Chromium，空载占用约 300–500 MB；4 GB 是 Chromium 系应用的通行下限 |
+| 处理器 | 最低 **1 GHz 双核 64 位** / 推荐 **2 GHz 及以上** | 检索与哈希校验都是轻负载，无特殊要求 |
+| 图形 | **不作要求**（填最低档） | 应用启动时主动调用 `app.disableHardwareAcceleration()` 禁用硬件加速，正是为了在老显卡上稳定运行，因此不依赖 GPU |
+| DirectX | **9.0**（填最低档） | 同上：不走硬件加速渲染，不需要 D3D 特性等级 |
+| 视频内存 | **不作要求** | 同上 |
+| 网络 | **需要联网** | 检索官方来源、下载安装包、云端安全检测均需网络 |
+| 支持的语言 | **中文（简体）** | 包内 `<Resource Language="zh-CN" />` |
+
+> **不要照抄 7-Zip / 记事本这类软件的"极低要求"**：Electron 应用自带整个 Chromium 运行时，内存与磁盘占用天然高于原生小程序。填得过低，用户装在 2 GB 老机器上体验会很差，差评也会算到你头上。
+
+**关于受限能力申报**：包内声明了 `runFullTrust`（完全信任）能力——这是 Electron / 桌面桥应用的必需项。提交时若被要求填写用途，这样说明：
+
+```
+本产品为基于 Electron 的桌面应用（Windows.FullTrustApplication），
+需要 runFullTrust 能力以作为原生 Win32 桌面程序运行。
+本版本未使用任何受限文件系统能力（未申请 broadFileSystemAccess），
+下载文件默认写入应用自身私有目录。
+```
+
+### 10.4 认证前自查
+
+```bash
+npm run dist:appx          # 确认打出的是商店版
+npm run store:check        # 确认凭据与产品 ID 可用
+```
+
+- 确认「设置 → 关于」显示的是 **🏪 商店版**
+- 确认商店版界面**没有**「开始安装」按钮、Geek 按钮不可用
+- 确认隐私政策链接可访问：https://sqdcz.github.io/jingzhuang/privacy.html
+- 确认包内 `MinVersion` 与商店表单填的操作系统要求一致

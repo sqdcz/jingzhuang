@@ -45,7 +45,7 @@ function loadConfig() {
       `缺少凭据: ${missing.join(', ')}\n` +
       `请把以下字段填到 scripts/.store.json：\n` +
       `{\n  "tenantId": "…",\n  "clientId": "…",\n  "clientSecret": "…",\n  "applicationId": "…"\n}\n` +
-      `怎么拿这四个值见 STORE.md 第 9 节。`
+      `怎么拿这四个值见 STORE.md 第 8 节。`
     )
   }
   return cfg
