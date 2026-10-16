@@ -2,6 +2,9 @@
 (function () {
   const { escapeHtml } = window.JZUtils
 
+  // 举报/反馈入口（生成式 AI 应用的合规要求：须为用户提供举报不当内容的途径）
+  const REPORT_URL = 'https://github.com/sqdcz/jingzhuang/issues/new'
+
   const PRESETS = {
     deepseek: {
       label: 'DeepSeek（深度求索）',
@@ -187,12 +190,19 @@
       <div class="about-row"><span class="k">数据目录</span><span>${escapeHtml(info.userData)}</span></div>
       <div class="about-row"><span class="k">下载目录</span><span>${escapeHtml(info.downloads)}</span></div>
       <div class="about-row"><span class="k">运行模式</span><span>${info.storeMode ? '🏪 商店版（只给查询/校验/指引）' : '完整版（可代启动安装程序与 Geek）'}</span></div>
+      <div class="about-row"><span class="k">反馈与举报</span><span><span class="link" data-act="report">报告问题或不当内容 →</span></span></div>
       <p class="muted" style="margin-top:14px;font-size:12px;line-height:1.8">
         · Geek Uninstaller 为免费软件，版权归其作者所有，本软件仅作内置集成。<br>
         · AI 查找结果经过程序侧多重验证（HTTPS、页面内容、下载链接、数字签名），并明示签名信息，但最终安装决定权在用户。<br>
+        · 本软件包含<strong>可选的生成式 AI 辅助检索</strong>（由你自行配置服务商）。若 AI 返回的内容存在错误、误导或不适宜之处，请点击上方「反馈与举报」告知我们，我们会核实并处理。<br>
         · 各 AI 服务商价格与免费额度以其官网为准。<br>
         · 白/黑/病毒名单与暗号可在「名单管理」中自由修改。
       </p>`
+    // 生成式 AI 应用的合规要求：必须为用户提供举报不当内容的途径
+    const reportLink = document.getElementById('aboutCard').querySelector('[data-act="report"]')
+    if (reportLink) {
+      reportLink.addEventListener('click', () => window.JZApi.openExternal(REPORT_URL))
+    }
   }
 
   function bind() {
