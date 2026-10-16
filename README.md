@@ -2,6 +2,15 @@
 
 想装什么软件，说人话就行。**优先走 winget 官方索引（不花 AI 的钱）**，找不到再让 AI 帮你找**官方**下载地址、自动校验安全、指导干净安装。
 
+## 下载
+
+**[⬇ 下载最新版 净装-Setup.exe（82 MB）](https://github.com/sqdcz/jingzhuang/releases/latest)**
+
+标准 Windows 安装向导，装完即用。要求 Windows 10/11 x64。
+当前版本未做代码签名，SmartScreen 会提示"未知发布者"，点「更多信息 → 仍要运行」即可。
+
+> 不用 AI 也能用：装了 winget 的话，常见软件直接走微软官方索引，不需要配任何 Key。
+
 ## 核心功能
 
 ### 查找链路（按优先级，省钱又稳）
@@ -60,6 +69,17 @@ npm run dist
 ```
 
 安装包会带上新的默认名单（用户本机已生成的名单不会被覆盖，可用设置页里的「恢复默认」拉取新默认值）。
+
+## 发版
+
+```bash
+# 1. 改 package.json 里的 version
+npm run dist                      # 打 NSIS 安装包 → dist/
+git tag v1.0.1 && git push origin v1.0.1
+gh release create v1.0.1 "dist/JingZhuang-Setup-1.0.1.exe" --title "净装 v1.0.1" --notes "更新说明"
+```
+
+上架微软商店另有 `npm run dist:appx` + `npm run store:submit`，见 [STORE.md](STORE.md)。
 
 ## 目录结构
 
