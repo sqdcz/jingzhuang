@@ -9,7 +9,10 @@ const { runPowerShell } = require('../src/main/security')
 const GEEK_URL = 'https://geekuninstaller.com/geek.zip'
 
 async function main() {
-  const target = path.join(__dirname, '..', 'resources', 'geek.exe')
+  const dir = path.join(__dirname, '..', 'resources')
+  const target = path.join(dir, 'geek.exe')
+  // 保证目录存在：electron-builder 的 extraResources 用目录 glob，目录缺失会报错
+  fs.mkdirSync(dir, { recursive: true })
   if (fs.existsSync(target)) {
     console.log(`已存在 ${target}，跳过下载`)
     return
@@ -31,8 +34,11 @@ async function main() {
   console.log(`✅ Geek 已就位: ${target}`)
 }
 
+// 下载失败不中断打包：Geek 官网在国内经常连不上，
+// 没它就少了「一键卸载」这个小功能，不该让整个构建挂掉。
 main().catch((e) => {
-  console.error('❌ 失败:', e.message)
-  console.error(`可手动下载: ${GEEK_URL} → 解压 geek.exe 放到 resources/ 目录`)
-  process.exit(1)
+  console.warn('⚠️ 未能自动获取 Geek Uninstaller:', e.message)
+  console.warn(`   可手动下载：${GEEK_URL} → 解压出 geek.exe → 放到 resources/ 目录，再重新打包`)
+  console.warn('   本次继续打包，只是软件里「一键卸载」按钮会不可用。')
+  process.exit(0)
 })

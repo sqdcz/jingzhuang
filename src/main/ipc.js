@@ -27,6 +27,17 @@ function isStoreMode() {
   }
 }
 
+/**
+ * 默认下载目录。
+ * 商店版（MSIX）跑在沙箱里，对用户「下载」文件夹没有直接写权限
+ * （要额外申请 broadFileSystemAccess 能力，审核更难过），
+ * 所以商店版默认落到应用私有目录，一定能写成功。
+ */
+function defaultDownloadDir() {
+  if (isStoreMode()) return path.join(app.getPath('userData'), 'downloads')
+  return app.getPath('downloads')
+}
+
 function emit(evt) {
   try {
     if (win && !win.isDestroyed()) win.webContents.send('flow-event', evt)
@@ -185,7 +196,7 @@ async function runAI(query, override, tokenArg) {
 async function doDownload(result, query, override, token, settingsArg) {
   const token2 = token || newToken()
   const settings = settingsArg || config.load()
-  const dir = (settings.download && settings.download.dir) || app.getPath('downloads')
+  const dir = (settings.download && settings.download.dir) || defaultDownloadDir()
   emit({ type: 'download-start', url: result.download_url, dir, name: result.name })
 
   const cancelToken = { cancelled: false }
@@ -418,7 +429,7 @@ function registerIpc(createWindow) {
     version: app.getVersion(),
     userData: app.getPath('userData'),
     listsPath: lists.userListsPath(),
-    downloads: app.getPath('downloads'),
+    downloads: defaultDownloadDir(),
     storeMode: isStoreMode()
   }))
 }

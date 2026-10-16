@@ -9,8 +9,15 @@ files:
   - defaults/**/*
   - package.json
 extraResources:
-  - from: resources/geek.exe
-    to: geek.exe
+  # 用目录 glob 而不是单文件：Geek 官网连不上时 resources/ 可能是空的，
+  # 单文件写法会直接报错中断打包，glob 匹配不到就跳过（仅失去一键卸载功能）
+  - from: resources/
+    to: .
+    filter:
+      - "**/*.exe"
+  # 窗口/任务栏运行时图标（BrowserWindow 在打包后要从 resources/ 读）
+  - from: build/icon.ico
+    to: icon.ico
 win:
   icon: build/icon.ico
   target:
@@ -21,8 +28,9 @@ win:
 # 上传商店前，把下面三项换成合作伙伴中心给你的真实值，详见 STORE.md
 appx:
   applicationId: JingZhuang
-  identityName: REPLACE_ME.JingZhuang          # 合作伙伴中心「产品标识」里的 Identity Name
-  publisher: CN=REPLACE-ME-PUBLISHER-ID        # 合作伙伴中心给你的 Publisher ID（CN=... 格式）
+  # 注意：identityName 只允许「字母数字 + 点 + 短横线」，不能有下划线/中文/空格
+  identityName: REPLACEME.JingZhuang           # 合作伙伴中心「产品标识」里的 Identity Name
+  publisher: CN=REPLACEME-PUBLISHER-ID         # 合作伙伴中心给你的 Publisher ID（CN=... 格式）
   publisherDisplayName: 衰气的船只
   displayName: 净装
   backgroundColor: '#0e8a6d'

@@ -2,6 +2,14 @@ const { app, BrowserWindow, shell } = require('electron')
 const path = require('path')
 const { registerIpc, setWindow } = require('./ipc')
 
+// 窗口图标：打包后从资源目录拿（build/ 不进 asar），开发时从 build/ 拿。
+// ico 里必须带 16/24/32/48 小尺寸帧，否则标题栏和任务栏预览会渲染异常。
+function windowIconPath() {
+  return app.isPackaged
+    ? path.join(process.resourcesPath, 'icon.ico')
+    : path.join(__dirname, '../../build/icon.ico')
+}
+
 // 老显卡上关硬件加速更稳
 app.disableHardwareAcceleration()
 app.setAppUserModelId('cn.chuanzhi.jingzhuang')
@@ -27,7 +35,7 @@ if (!gotLock) {
       title: '净装',
       backgroundColor: '#f6f7f9',
       autoHideMenuBar: true,
-      icon: path.join(__dirname, '../../build/icon.png'),
+      icon: windowIconPath(),
       webPreferences: {
         preload: path.join(__dirname, '../preload/index.js'),
         contextIsolation: true,
@@ -45,6 +53,21 @@ if (!gotLock) {
         if (/error|uncaught|failed/i.test(message)) console.log('[renderer]', message)
       })
       win.webContents.on('did-finish-load', async () => {
+        // 界面初始化依赖异步 IPC（设置/名单/应用信息），
+        // did-finish-load 会早于初始化完成，直接点搜索会点了个寂寞。
+        // 这里轮询等 JZApp 就绪再动手，打包版与开发版都稳。
+        const readyDeadline = Date.now() + 30000
+        let ready = false
+        while (Date.now() < readyDeadline) {
+          try {
+            ready = await win.webContents.executeJavaScript(
+              `!!(window.JZApp && window.JZApi && document.getElementById('btnSearch'))`
+            )
+          } catch (_e) { /* 忽略 */ }
+          if (ready) break
+          await new Promise((r) => setTimeout(r, 300))
+        }
+        console.log('FLOW-READY ' + ready)
         await win.webContents.executeJavaScript(`
           document.getElementById('searchInput').value = ${JSON.stringify(fq)};
           document.getElementById('btnSearch').click();
@@ -57,7 +80,9 @@ if (!gotLock) {
           try {
             txt = await win.webContents.executeJavaScript(`document.getElementById('cards').innerText || ''`)
           } catch (_e) { /* 忽略 */ }
-          const done = /安装前必读|哈希比对|出错了|winget 官方索引里找到|打开微软商店|已锁定|风险提示|高风险警告|白名单直达/.test(txt)
+          // 只认终态：下载校验完的安装指导卡 / 出错 / 商店跳转 / 各类名单卡。
+          // 「已锁定」只是中间态（锁定结果后还要下载），不能在这就收工。
+          const done = /安装前必读|哈希比对|出错了|打开微软商店|风险提示|高风险警告|白名单直达/.test(txt)
           if (done || Date.now() > deadline) {
             clearInterval(timer)
             console.log('FLOW-TIMEOUT ' + (!done))
@@ -78,6 +103,17 @@ if (!gotLock) {
         app.quit()
       })
       win.webContents.on('did-finish-load', async () => {
+        // 等异步 IPC 初始化完成再取值，否则 chips 之类的动态内容还没渲染
+        const readyDeadline = Date.now() + 30000
+        while (Date.now() < readyDeadline) {
+          let ready = false
+          try {
+            ready = await win.webContents.executeJavaScript(`!!(window.JZApp && window.JZApi)`)
+          } catch (_e) { /* 忽略 */ }
+          if (ready) break
+          await new Promise((r) => setTimeout(r, 300))
+        }
+        await new Promise((r) => setTimeout(r, 800))
         try {
           const r = await win.webContents.executeJavaScript(`(() => ({
             ready: document.readyState,
@@ -90,6 +126,8 @@ if (!gotLock) {
             searchInput: !!document.getElementById('searchInput'),
             tabCount: document.querySelectorAll('#settingsTabs .tab').length,
             chipCount: document.querySelectorAll('#quickChips button').length,
+            wingetCard: !!document.getElementById('wingetEnabled') || !!document.querySelector('#wingetStatus'),
+            storeMode: !!window.JZStoreMode,
             themeAttr: document.documentElement.getAttribute('data-theme')
           }))()`)
           console.log('SMOKE-RESULT ' + JSON.stringify(r))
