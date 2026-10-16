@@ -32,12 +32,15 @@
 
 ## 2. 创建应用并保留名称
 
-1. 合作伙伴中心 → **应用和游戏** → 新建产品 → 类型选「**Win32**」（MSIX 走这个）
-2. 名称填 **净装**，点「检查可用性」后**保留名称**
-3. 进入该产品 → **产品标识（Product Identity）** 页面，记下：
+1. 合作伙伴中心 → **应用和游戏** → 新建产品
+2. 产品类型选 **MSIX**（我们是 `.appx/.msix` 容器）
+   > ⚠️ 别选 EXE/MSI 那种类型：那条产品线走另一套 API，
+   > **不支持上传安装包本体**，只能给一个公网下载直链，没法做自动提交。
+3. 名称填 **净装**，点「检查可用性」后**保留名称**
+4. 进入该产品 → **产品标识（Product Identity）** 页面，记下：
    - **Package/Identity/Name**（形如 `12345YourName.JingZhuang`）
    - **Publisher**（形如 `CN=A1B2C3D4-...`）
-   - **PublisherDisplayName**
+   - **Product ID**（形如 `9NXXXXXXXXXX`，第 9 节自动提交要用这个，别和 Identity Name 搞混）
 
 ## 3. 把标识填进打包配置
 
@@ -103,7 +106,44 @@ npm run dist:appx
 | 未签名 SmartScreen 警告 | 商店会自动签名，上架后无此问题；侧载的 NSIS 版会有提示，属正常 |
 | 包名/Publisher 不匹配 | 必须是第 2 步保留名称后拿到的真实值，填错会上传失败 |
 
-## 8. 上架后
+## 8. 命令行自动提交（第一次之后就不用再进网页了）
+
+> 前提：**这个产品在网页端已经完成过至少一次提交**（包含年龄分级问卷）。
+> 微软的 API **不能创建新产品**，第一次必须在网页端走完。之后每次发新版交给脚本。
+
+### 一次性配置
+
+1. **注册一个 Entra ID 应用**（Azure 门户 → Microsoft Entra ID → 应用注册 → 新注册）
+   - 记下：租户 ID、应用程序(客户端) ID
+   - 建一个「客户端机密」，**立刻复制保存**（离开页面就不再显示，最长 2 年有效）
+2. **把它挂到合作伙伴中心**：合作伙伴中心 → 账户设置 → 用户管理 → 添加 Azure AD 应用，
+   角色给 **Manager**
+3. 复制一份配置填好（这一步的 `.store.json` 已被 gitignore，密钥不会进 GitHub）：
+   ```bash
+   copy scripts\.store.example.json scripts\.store.json
+   ```
+   填 `tenantId` / `clientId` / `clientSecret` / `applicationId`（= 第 2 步记下的 **Product ID**）
+
+### 日常使用
+
+```bash
+npm run store:check     # 先验证：令牌能不能拿、产品 ID 对不对、列出历史提交
+npm run dist:appx       # 打商店包
+npm run store:submit    # 上传并提交认证（提交前会让你输 yes 确认）
+```
+
+脚本会依次：拿令牌 → 创建 in-progress 提交 → 把包打成 zip 直传 Azure Blob
+→ 更新发布模式/包文件名 → commit → 轮询认证状态直到 Published 或 Failed。
+
+CI 里用 `node scripts/store-submit.js submit --yes` 跳过确认。
+凭据也支持环境变量（适合 CI 里不落盘）：
+`JZ_STORE_TENANT_ID` / `JZ_STORE_CLIENT_ID` / `JZ_STORE_CLIENT_SECRET` / `JZ_STORE_APP_ID`。
+
+> 脚本零依赖，纯 Node 内置 fetch；ZIP 打包是手写的 store 模式实现，
+> 已用 PowerShell 解压比对哈希验证过字节级正确。
+
+## 9. 上架后
 
 - 商店版与 GitHub 上的侧载版共用同一套代码，`storeMode` 是唯一开关
-- 更新版本：改 `package.json` 的 `version` → 重打包 → 上传新包
+- 更新版本：改 `package.json` 的 `version` → `npm run dist:appx` → `npm run store:submit`
+- 认证失败时脚本会打印最终状态，去合作伙伴中心看详细报告

@@ -5,3 +5,5 @@ dist/
 *.log
 resources/geek.zip
 resources/geek.exe
+# 商店 API 凭据（含密钥，绝不能入库）
+scripts/.store.json

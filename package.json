@@ -12,7 +12,9 @@
     "smoke": "node test/smoke.js",
     "fetch-geek": "node scripts/fetch-geek.js",
     "dist": "node scripts/fetch-geek.js && electron-builder --win nsis --x64",
-    "dist:appx": "node scripts/fetch-geek.js && electron-builder --win appx --x64 --config.extraMetadata.storeMode=true"
+    "dist:appx": "node scripts/fetch-geek.js && electron-builder --win appx --x64 --config.extraMetadata.storeMode=true",
+    "store:check": "node scripts/store-submit.js check",
+    "store:submit": "node scripts/store-submit.js submit"
   },
   "devDependencies": {
     "electron": "^33.2.0",

@@ -1,0 +1,15 @@
+{
+  "_说明": "复制本文件为 .store.json 并填入真实值。.store.json 已被 gitignore，密钥不会入库。",
+  "tenantId": "在 Azure 门户 → Microsoft Entra ID → 概述 里的「租户 ID」",
+  "clientId": "在 Azure 门户 → 应用注册 → 你的应用的「应用程序(客户端) ID」",
+  "clientSecret": "该应用的「客户端凭据」→ 机密值（创建后立刻复制，离开页面就看不到了）",
+  "applicationId": "合作伙伴中心 → 该产品 → 产品标识 → Product ID（不是 Identity Name！）",
+
+  "_可选": {
+    "targetPublishMode": "Manual（认证通过后自己点发布，更稳）| Immediate（通过即自动发布）",
+    "notesForCertification": "给审核员的备注，解释商店版为什么不做某些事",
+    "packagePath": "留空则自动取 dist/ 里最新的 .appx/.msix"
+  },
+  "targetPublishMode": "Manual",
+  "notesForCertification": "本商店版本仅为用户提供软件官方来源查询与安装包安全校验（哈希/签名/云查杀）。下载的安装包保存在应用私有目录，本应用不代用户执行下载到的安装程序，也不启动任何外部可执行文件（内置的 Geek 卸载器在商店版已禁用）。"
+}
