@@ -93,8 +93,11 @@ npm run dist:appx
    - 图标资产：上传 `build/store-assets/` 里的文件
    - 截图：第 4 步的图
 3. **属性** → 年龄分级问卷（选 3+ / 无暴力无成人内容即可）
-4. **隐私政策 URL**：把 `PRIVACY.md` 推到 GitHub 后填
-   `https://github.com/sqdcz/jingzhuang/blob/main/PRIVACY.md`
+4. **隐私政策 URL**：填这个（已上线，纯静态页，无需登录即可访问）
+   ```
+   https://sqdcz.github.io/jingzhuang/privacy.html
+   ```
+   > 仓库里还留了一份 markdown 版 `PRIVACY.md`，改内容时两处同步（页面源码在 `docs/privacy.html`，GitHub Pages 源为 `main` 分支 `/docs` 目录）
 5. 提交认证 → 通常 1–3 个工作日出结果
 
 ## 7. 认证常见问题预判

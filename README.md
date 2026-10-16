@@ -101,7 +101,7 @@ Electron 33 + **零运行时 npm 依赖**（只有 electron / electron-builder �
 
 ## 微软商店
 
-见 [STORE.md](STORE.md)，隐私政策见 [PRIVACY.md](PRIVACY.md)。
+见 [STORE.md](STORE.md)，隐私政策见 https://sqdcz.github.io/jingzhuang/privacy.html （源码 `docs/privacy.html`）。
 
 ## 说明与免责
 
