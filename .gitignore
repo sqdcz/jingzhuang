@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.npm-cache/
+.electron-cache/
+*.log
+resources/geek.zip
+resources/geek.exe

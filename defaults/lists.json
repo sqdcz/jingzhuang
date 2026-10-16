@@ -1,0 +1,561 @@
+{
+  "secretCode": "我爱帅锅大钢门",
+  "whitelist": [
+    { "name": "微信", "aliases": ["wechat", "weixin", "wx", "电脑微信", "微信pc版"], "officialUrl": "https://weixin.qq.com/", "downloadUrl": "https://dldir1v6.qq.com/weixin/Windows/WeChatSetup.exe", "note": "腾讯官方直链，自动更新到最新版" },
+    { "name": "QQ", "aliases": ["腾讯qq", "qqnt", "tim", "qq客户端"], "officialUrl": "https://im.qq.com/pc/", "note": "" },
+    { "name": "TIM", "aliases": ["tim办公", "腾讯tim"], "officialUrl": "https://tim.qq.com/", "note": "腾讯的办公向 QQ，相对清爽" },
+    { "name": "钉钉", "aliases": ["dingding", "dingtalk", "阿里钉钉"], "officialUrl": "https://www.dingtalk.com/", "note": "" },
+    { "name": "企业微信", "aliases": ["wxwork", "企业vx"], "officialUrl": "https://work.weixin.qq.com/", "note": "" },
+    { "name": "飞书", "aliases": ["feishu", "lark", "字节飞书"], "officialUrl": "https://www.feishu.cn/", "note": "" },
+    { "name": "腾讯会议", "aliases": ["voovmeeting", "tengxunhuiyi", "会议软件"], "officialUrl": "https://meeting.tencent.com/", "note": "" },
+    { "name": "Zoom", "aliases": ["zoom会议", "zoom客户端"], "officialUrl": "https://zoom.us/download", "note": "" },
+    { "name": "Telegram", "aliases": ["tg", "telegramdesktop", "电报桌面版"], "officialUrl": "https://desktop.telegram.org/", "note": "" },
+    { "name": "Discord", "aliases": ["dc客户端", "discord客户端"], "officialUrl": "https://discord.com/download", "note": "" },
+    { "name": "Slack", "aliases": ["slack客户端"], "officialUrl": "https://slack.com/downloads/windows", "note": "" },
+    { "name": "Skype", "aliases": ["skype客户端"], "officialUrl": "https://www.skype.com/zh-Hans/get-skype/", "note": "" },
+
+    { "name": "Google Chrome", "aliases": ["chrome", "谷歌浏览器", "chromium", "谷歌"], "officialUrl": "https://www.google.com/chrome/", "note": "国内网络下载可能较慢" },
+    { "name": "Microsoft Edge", "aliases": ["edge", "微软浏览器", "edge浏览器"], "officialUrl": "https://www.microsoft.com/edge", "note": "Win10/11 系统自带，一般无需另装" },
+    { "name": "Mozilla Firefox", "aliases": ["firefox", "火狐", "火狐浏览器"], "officialUrl": "https://www.firefox.com.cn/", "note": "火狐中国官网" },
+    { "name": "Firefox ESR", "aliases": ["firefoxesr", "火狐延长支持版"], "officialUrl": "https://www.mozilla.org/zh-CN/firefox/enterprise/", "note": "企业/长期支持版" },
+    { "name": "Brave", "aliases": ["brave浏览器", "bravebrowser"], "officialUrl": "https://brave.com/download/", "note": "自带广告拦截" },
+    { "name": "Opera", "aliases": ["欧朋浏览器", "opera浏览器"], "officialUrl": "https://www.opera.com/zh-cn/download", "note": "" },
+    { "name": "Vivaldi", "aliases": ["vivaldi浏览器"], "officialUrl": "https://vivaldi.com/zh-hans/download/", "note": "" },
+    { "name": "Tor Browser", "aliases": ["tor", "洋葱浏览器", "torbrowser"], "officialUrl": "https://www.torproject.org/download/", "note": "仅用于隐私保护，请遵守当地法规" },
+    { "name": "百分浏览器", "aliases": ["centbrowser", "cent", "百分"], "officialUrl": "https://www.centbrowser.cn/", "note": "国产 Chromium 衍生，干净无推广" },
+
+    { "name": "7-Zip", "aliases": ["7zip", "7z", "压缩软件"], "officialUrl": "https://www.7-zip.org/", "note": "开源免费压缩工具，干净无广告" },
+    { "name": "NanaZip", "aliases": ["nanazip", "娜娜压缩"], "officialUrl": "https://github.com/M2Team/NanaZip/releases", "note": "开源，7-Zip 的现代界面分支" },
+    { "name": "PeaZip", "aliases": ["peazip", "豌豆压缩"], "officialUrl": "https://peazip.github.io/", "note": "开源压缩工具" },
+    { "name": "Bandizip", "aliases": ["bandizip", "班迪压缩"], "officialUrl": "https://www.bandisoft.com/bandizip/", "note": "免费版含少量推广提示，可选付费版" },
+    { "name": "WinRAR", "aliases": ["winrar", "rar解压"], "officialUrl": "https://www.win-rar.com/", "note": "商业软件，可无限期试用" },
+
+    { "name": "PotPlayer", "aliases": ["potplayer", "pot播放器", "播放器potplayer"], "officialUrl": "https://potplayer.daum.net/", "note": "" },
+    { "name": "VLC", "aliases": ["vlc", "vlc播放器", "vlcmediaplayer"], "officialUrl": "https://www.videolan.org/vlc/", "note": "开源全能播放器" },
+    { "name": "MPC-HC", "aliases": ["mpchc", "mediaplayerclassic"], "officialUrl": "https://github.com/clsid2/mpc-hc/releases", "note": "开源轻量播放器" },
+    { "name": "mpv", "aliases": ["mpv播放器"], "officialUrl": "https://mpv.io/installation/", "note": "开源极简播放器" },
+    { "name": "foobar2000", "aliases": ["foobar", "fb2k"], "officialUrl": "https://www.foobar2000.org/download", "note": "轻量音乐播放器" },
+    { "name": "AIMP", "aliases": ["aimp播放器"], "officialUrl": "https://www.aimp.ru/", "note": "" },
+    { "name": "网易云音乐", "aliases": ["neteasemusic", "云音乐", "网易音乐"], "officialUrl": "https://music.163.com/", "note": "" },
+    { "name": "Spotify", "aliases": ["spotify客户端"], "officialUrl": "https://www.spotify.com/download/windows/", "note": "" },
+
+    { "name": "IrfanView", "aliases": ["irfanview", "图片查看器irfan"], "officialUrl": "https://www.irfanview.com/", "note": "老牌轻量看图" },
+    { "name": "XnView MP", "aliases": ["xnview", "xnviewmp"], "officialUrl": "https://www.xnview.com/en/xnviewmp/", "note": "" },
+    { "name": "Honeyview", "aliases": ["honeyview", "蜂蜜看图"], "officialUrl": "https://en.bandisoft.com/honeyview/", "note": "" },
+    { "name": "ImageGlass", "aliases": ["imageglass", "图片查看器imageglass"], "officialUrl": "https://imageglass.org/download", "note": "开源看图" },
+    { "name": "GIMP", "aliases": ["gimp", "免费ps", "修图软件免费"], "officialUrl": "https://www.gimp.org/downloads/", "note": "开源图像编辑，Photoshop 替代" },
+    { "name": "Krita", "aliases": ["krita", "绘图krita", "绘画软件"], "officialUrl": "https://krita.org/zh-cn/download/", "note": "开源绘画软件" },
+    { "name": "Inkscape", "aliases": ["inkscape", "免费矢量"], "officialUrl": "https://inkscape.org/release/", "note": "开源矢量图软件" },
+    { "name": "Paint.NET", "aliases": ["paintnet", "paintdotnet"], "officialUrl": "https://www.getpaint.net/download.html", "note": "" },
+    { "name": "Snipaste", "aliases": ["snipaste", "截图snipaste", "贴图工具"], "officialUrl": "https://www.snipaste.com/", "note": "截图 + 贴图" },
+    { "name": "ShareX", "aliases": ["sharex", "截图sharex", "录屏sharex"], "officialUrl": "https://getsharex.com/downloads/", "note": "开源截图录屏一体" },
+    { "name": "PicPick", "aliases": ["picpick", "截图picpick"], "officialUrl": "https://picpick.app/zh/download", "note": "个人免费" },
+    { "name": "Lightshot", "aliases": ["lightshot", "截图lightshot"], "officialUrl": "https://app.prntscr.com/", "note": "" },
+
+    { "name": "Everything", "aliases": ["everything", "everything搜索", "文件搜索"], "officialUrl": "https://www.voidtools.com/zh-cn/", "note": "秒搜全盘文件" },
+    { "name": "Listary", "aliases": ["listary", "文件快速定位"], "officialUrl": "https://www.listary.com/download", "note": "" },
+    { "name": "PowerToys", "aliases": ["powertoys", "微软powertoys"], "officialUrl": "https://github.com/microsoft/PowerToys/releases", "note": "微软官方效率工具集" },
+    { "name": "AutoHotkey", "aliases": ["autohotkey", "ahk脚本"], "officialUrl": "https://www.autohotkey.com/", "note": "" },
+    { "name": "Windows Terminal", "aliases": ["windowsterminal", "微软终端"], "officialUrl": "https://aka.ms/terminal", "note": "微软官方终端" },
+    { "name": "WizTree", "aliases": ["wiztree", "磁盘占用分析"], "officialUrl": "https://diskanalyzer.com/download", "note": "极快的磁盘空间分析" },
+    { "name": "TreeSize Free", "aliases": ["treesize", "磁盘分析treesize"], "officialUrl": "https://www.jam-software.com/treesize_free/", "note": "" },
+    { "name": "SpaceSniffer", "aliases": ["spacesniffer", "磁盘空间嗅探"], "officialUrl": "http://www.uderzo.it/main_products/space_sniffer/", "note": "" },
+    { "name": "Bulk Rename Utility", "aliases": ["bulkrename", "批量重命名"], "officialUrl": "https://www.bulkrenameutility.co.uk/Download.php", "note": "" },
+    { "name": "CPU-Z", "aliases": ["cpuz", "看配置cpuz"], "officialUrl": "https://www.cpuid.com/softwares/cpu-z.html", "note": "" },
+    { "name": "GPU-Z", "aliases": ["gpuz", "看显卡gpuz"], "officialUrl": "https://www.techpowerup.com/gpuz/", "note": "" },
+    { "name": "HWiNFO", "aliases": ["hwinfo", "硬件信息hwinfo"], "officialUrl": "https://www.hwinfo.com/download/", "note": "" },
+    { "name": "CrystalDiskInfo", "aliases": ["crystaldiskinfo", "硬盘健康检测"], "officialUrl": "https://crystalmark.info/en/software/crystaldiskinfo/", "note": "看硬盘 SMART 健康" },
+    { "name": "CrystalDiskMark", "aliases": ["crystaldiskmark", "硬盘测速"], "officialUrl": "https://crystalmark.info/en/software/crystaldiskmark/", "note": "硬盘读写测速" },
+    { "name": "Rufus", "aliases": ["rufus", "启动盘制作", "u盘启动"], "officialUrl": "https://rufus.ie/zh/", "note": "开源启动盘制作工具" },
+    { "name": "Ventoy", "aliases": ["ventoy", "多系统启动盘"], "officialUrl": "https://www.ventoy.net/cn/download.html", "note": "开源，一个 U 盘放多个镜像" },
+    { "name": "BalenaEtcher", "aliases": ["etcher", "balenaetcher", "镜像烧录"], "officialUrl": "https://www.balena.io/etcher/", "note": "开源镜像烧录" },
+    { "name": "微PE工具箱", "aliases": ["wepe", "微pe", "装机pe"], "officialUrl": "https://www.wepe.com.cn/download.html", "note": "干净的 PE 维护工具，无捆绑" },
+    { "name": "VeraCrypt", "aliases": ["veracrypt", "加密盘veracrypt"], "officialUrl": "https://www.veracrypt.fr/en/Downloads.html", "note": "开源磁盘加密" },
+    { "name": "KeePassXC", "aliases": ["keepassxc", "keepass", "密码管理器免费"], "officialUrl": "https://keepassxc.org/download/", "note": "开源密码管理" },
+    { "name": "Bitwarden", "aliases": ["bitwarden", "密码管理bitwarden"], "officialUrl": "https://bitwarden.com/download/", "note": "" },
+    { "name": "火绒安全", "aliases": ["huorong", "火绒", "火绒杀毒", "火绒安全软件"], "officialUrl": "https://www.huorong.cn/", "note": "国产杀软里少见的安静派，无广告弹窗" },
+    { "name": "Malwarebytes", "aliases": ["malwarebytes", "恶意软件清理"], "officialUrl": "https://www.malwarebytes.com/", "note": "" },
+    { "name": "卡巴斯基免费版", "aliases": ["kaspersky", "卡巴斯基"], "officialUrl": "https://www.kaspersky.com.cn/downloads", "note": "" },
+    { "name": "DisplayDriverUninstaller", "aliases": ["ddu", "显卡驱动卸载", "ddu卸载驱动"], "officialUrl": "https://www.wagnardsoft.com/", "note": "彻底卸载显卡驱动用" },
+    { "name": "DiskGenius", "aliases": ["diskgenius", "分区助手diskgenius", "数据恢复diskgenius"], "officialUrl": "https://www.diskgenius.cn/download.php", "note": "国产分区/数据恢复，免费版够用" },
+    { "name": "Recuva", "aliases": ["recuva", "文件恢复recuva"], "officialUrl": "https://www.ccleaner.com/recuva", "note": "安装时注意取消附带的其他软件" },
+
+    { "name": "Visual Studio Code", "aliases": ["vscode", "vscode编辑器", "vsc", "代码编辑器"], "officialUrl": "https://code.visualstudio.com/", "note": "" },
+    { "name": "VSCodium", "aliases": ["vscodium", "vscode去遥测版"], "officialUrl": "https://vscodium.com/", "note": "去掉微软遥测的 VS Code 构建" },
+    { "name": "Sublime Text", "aliases": ["sublime", "sublimetext"], "officialUrl": "https://www.sublimetext.com/download", "note": "付费，可无限试用" },
+    { "name": "Notepad++", "aliases": ["notepadplusplus", "notepadplus", "文本编辑器notepad"], "officialUrl": "https://notepad-plus-plus.org/", "note": "开源代码编辑器" },
+    { "name": "IntelliJ IDEA Community", "aliases": ["idea", "intellij", "java开发idea"], "officialUrl": "https://www.jetbrains.com/idea/download/", "note": "社区版免费开源" },
+    { "name": "PyCharm Community", "aliases": ["pycharm", "python开发pycharm"], "officialUrl": "https://www.jetbrains.com/pycharm/download/", "note": "社区版免费开源" },
+    { "name": "Android Studio", "aliases": ["androidstudio", "安卓开发"], "officialUrl": "https://developer.android.com/studio", "note": "" },
+    { "name": "Git", "aliases": ["gitforwindows", "git客户端", "版本控制git"], "officialUrl": "https://git-scm.com/download/win", "note": "" },
+    { "name": "GitHub Desktop", "aliases": ["githubdesktop", "github客户端"], "officialUrl": "https://desktop.github.com/", "note": "" },
+    { "name": "Node.js", "aliases": ["nodejs", "node", "安装node"], "officialUrl": "https://nodejs.org/zh-cn/download", "note": "" },
+    { "name": "Python", "aliases": ["python3", "安装python"], "officialUrl": "https://www.python.org/downloads/windows/", "note": "" },
+    { "name": "Go", "aliases": ["golang", "go语言"], "officialUrl": "https://go.dev/dl/", "note": "" },
+    { "name": "Rustup", "aliases": ["rust", "rustup", "rust语言"], "officialUrl": "https://rustup.rs/", "note": "" },
+    { "name": "Eclipse Temurin JDK", "aliases": ["jdk", "adoptium", "openjdk", "java环境"], "officialUrl": "https://adoptium.net/zh-CN/download/", "note": "开源免费 JDK" },
+    { "name": "Docker Desktop", "aliases": ["docker", "docker桌面版"], "officialUrl": "https://www.docker.com/products/docker-desktop/", "note": "" },
+    { "name": "Postman", "aliases": ["postman", "接口调试postman"], "officialUrl": "https://www.postman.com/downloads/", "note": "" },
+    { "name": "DBeaver", "aliases": ["dbeaver", "数据库客户端dbeaver"], "officialUrl": "https://dbeaver.io/download/", "note": "开源数据库管理" },
+    { "name": "HeidiSQL", "aliases": ["heidisql", "mysql客户端免费"], "officialUrl": "https://www.heidisql.com/download.php", "note": "开源数据库管理" },
+    { "name": "Wireshark", "aliases": ["wireshark", "抓包wireshark"], "officialUrl": "https://www.wireshark.org/download.html", "note": "开源网络抓包" },
+    { "name": "PuTTY", "aliases": ["putty", "ssh客户端putty"], "officialUrl": "https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html", "note": "" },
+    { "name": "MobaXterm", "aliases": ["mobaxterm", "ssh客户端mobaxterm"], "officialUrl": "https://mobaxterm.mobatek.net/download.html", "note": "个人版免费" },
+    { "name": "VirtualBox", "aliases": ["virtualbox", "虚拟机virtualbox"], "officialUrl": "https://www.virtualbox.org/wiki/Downloads", "note": "开源虚拟机" },
+    { "name": "VMware Workstation Player", "aliases": ["vmware", "vmwareplayer", "虚拟机vmware"], "officialUrl": "https://www.vmware.com/products/workstation-player.html", "note": "个人免费" },
+
+    { "name": "SumatraPDF", "aliases": ["sumatrapdf", "pdf阅读器轻量"], "officialUrl": "https://www.sumatrapdfreader.org/download-free-pdf-viewer", "note": "开源极简 PDF 阅读器" },
+    { "name": "PDF24", "aliases": ["pdf24", "pdf工具pdf24"], "officialUrl": "https://tools.pdf24.org/zh/creator", "note": "开源免费 PDF 工具箱" },
+    { "name": "Adobe Acrobat Reader", "aliases": ["acrobatreader", "adobereader", "pdf阅读器"], "officialUrl": "https://get.adobe.com/cn/reader/", "note": "安装时取消附加组件勾选" },
+    { "name": "Calibre", "aliases": ["calibre", "电子书管理calibre"], "officialUrl": "https://calibre-ebook.com/download_windows64", "note": "开源电子书管理" },
+    { "name": "Zotero", "aliases": ["zotero", "文献管理zotero"], "officialUrl": "https://www.zotero.org/download/", "note": "开源文献管理" },
+    { "name": "Thunderbird", "aliases": ["thunderbird", "邮件客户端thunderbird"], "officialUrl": "https://www.thunderbird.net/zh-CN/download/", "note": "开源邮件客户端" },
+    { "name": "LibreOffice", "aliases": ["libreoffice", "libreoffice套件", "免费office", "免费办公软件"], "officialUrl": "https://zh-cn.libreoffice.org/", "note": "开源办公套件，替代收费 Office" },
+    { "name": "OnlyOffice", "aliases": ["onlyoffice", "onlyoffice桌面版"], "officialUrl": "https://www.onlyoffice.com/zh/download-desktop.aspx", "note": "开源办公套件" },
+    { "name": "Obsidian", "aliases": ["obsidian", "黑曜石笔记"], "officialUrl": "https://obsidian.md/download", "note": "个人免费" },
+    { "name": "Joplin", "aliases": ["joplin", "笔记joplin"], "officialUrl": "https://joplinapp.org/download/", "note": "开源笔记" },
+    { "name": "思源笔记", "aliases": ["siyuan", "siyuannotes", "国产笔记开源"], "officialUrl": "https://b3log.org/siyuan/", "note": "国产开源笔记" },
+    { "name": "Notion", "aliases": ["notion客户端", "笔记notion"], "officialUrl": "https://www.notion.so/desktop", "note": "" },
+    { "name": "Typora", "aliases": ["typora", "markdown编辑器typora"], "officialUrl": "https://typoraio.cn/", "note": "付费软件，有试用" },
+
+    { "name": "OBS Studio", "aliases": ["obs", "录屏obs", "直播推流", "录屏软件"], "officialUrl": "https://obsproject.com/", "note": "开源录屏/直播" },
+    { "name": "ScreenToGif", "aliases": ["screentogif", "录屏gif", "gif录制"], "officialUrl": "https://www.screentogif.com/", "note": "开源屏幕录 GIF" },
+    { "name": "HandBrake", "aliases": ["handbrake", "视频压缩handbrake", "视频转码"], "officialUrl": "https://handbrake.fr/downloads.php", "note": "开源视频转码" },
+    { "name": "FFmpeg", "aliases": ["ffmpeg", "视频处理ffmpeg"], "officialUrl": "https://ffmpeg.org/download.html", "note": "命令行音视频工具" },
+    { "name": "LosslessCut", "aliases": ["losslesscut", "无损剪辑"], "officialUrl": "https://github.com/mkb79/LosslessCut/releases", "note": "开源无损视频剪辑" },
+    { "name": "Audacity", "aliases": ["audacity", "音频剪辑audacity"], "officialUrl": "https://www.audacityteam.org/download/windows/", "note": "开源音频编辑" },
+    { "name": "Shutter Encoder", "aliases": ["shutterencoder", "视频压缩shutter"], "officialUrl": "https://www.shutterencoder.com/", "note": "" },
+    { "name": "剪映专业版", "aliases": ["capcut", "jianying", "剪辑软件", "视频剪辑"], "officialUrl": "https://www.capcut.cn/", "note": "" },
+
+    { "name": "Steam", "aliases": ["steam平台", "游戏平台steam"], "officialUrl": "https://store.steampowered.com/about/", "note": "" },
+    { "name": "Epic Games", "aliases": ["epic", "epicgames", "epic平台"], "officialUrl": "https://store.epicgames.com/zh-CN/download", "note": "" },
+    { "name": "GOG Galaxy", "aliases": ["gog", "goggalaxy", "gog平台"], "officialUrl": "https://www.gog.com/galaxy", "note": "" },
+    { "name": "Xbox", "aliases": ["xboxapp", "xbox客户端"], "officialUrl": "https://www.xbox.com/zh-CN/apps", "note": "" },
+
+    { "name": "Motrix", "aliases": ["motrix", "下载器motrix", "aria2下载"], "officialUrl": "https://motrix.app/", "note": "开源下载器" },
+    { "name": "qBittorrent", "aliases": ["qbittorrent", "qbitt", "bt下载"], "officialUrl": "https://www.qbittorrent.org/download", "note": "开源无广告 BT 客户端" },
+    { "name": "Free Download Manager", "aliases": ["fdm", "freedownloadmanager", "下载器fdm"], "officialUrl": "https://www.freedownloadmanager.org/zh/", "note": "开源下载器" },
+    { "name": "阿里云盘", "aliases": ["alipan", "阿里云盘客户端"], "officialUrl": "https://www.alipan.com/", "note": "" },
+    { "name": "坚果云", "aliases": ["jianguoyun", "坚果云同步"], "officialUrl": "https://www.jianguoyun.com/", "note": "" },
+    { "name": "OneDrive", "aliases": ["onedrive", "微软云盘"], "officialUrl": "https://www.microsoft.com/microsoft-365/onedrive/download", "note": "系统已自带" },
+    { "name": "RustDesk", "aliases": ["rustdesk", "远程桌面rustdesk"], "officialUrl": "https://rustdesk.com/zh/", "note": "开源远程桌面，可自建服务器" },
+    { "name": "AnyDesk", "aliases": ["anydesk", "远程桌面anydesk"], "officialUrl": "https://anydesk.com/zhs/downloads", "note": "个人免费" },
+
+    { "name": "Ollama", "aliases": ["ollama", "本地大模型", "本地ai"], "officialUrl": "https://ollama.com/", "note": "本地跑大模型" },
+    { "name": "LM Studio", "aliases": ["lmstudio", "lmstudio客户端"], "officialUrl": "https://lmstudio.ai/", "note": "本地大模型图形界面" },
+    { "name": "Chatbox", "aliases": ["chatbox", "ai客户端chatbox"], "officialUrl": "https://chatboxai.app/zh", "note": "开源 AI 客户端" },
+    { "name": "Lively Wallpaper", "aliases": ["lively", "livelywallpaper", "动态壁纸"], "officialUrl": "https://rocksdanister.github.io/lively/", "note": "开源动态壁纸" },
+    { "name": "Rainmeter", "aliases": ["rainmeter", "桌面美化rainmeter"], "officialUrl": "https://www.rainmeter.net/", "note": "开源桌面美化" },
+    { "name": "TranslucentTB", "aliases": ["translucenttb", "任务栏透明"], "officialUrl": "https://github.com/TranslucentTB/TranslucentTB/releases", "note": "开源任务栏美化" },
+    { "name": "小狼毫输入法", "aliases": ["rime", "小狼毫", "中州韵", "开源输入法"], "officialUrl": "https://rime.im/download/", "note": "开源输入法，无任何广告" },
+    { "name": "Geek Uninstaller", "aliases": ["geek", "geek卸载", "卸载工具geek"], "officialUrl": "https://geekuninstaller.com/", "note": "本软件已内置 Geek，右上角可直接唤起" }
+  ],
+
+  "blacklist": [
+    {
+      "name": "2345好压",
+      "aliases": ["2345haoya", "haozip", "2345压缩"],
+      "risk": "经典全家桶：安装时默认勾选静默推广、运行后弹窗广告常驻、后台常驻进程、卸载后留残留。装它一个往往会带出一串。",
+      "alternatives": [{ "name": "7-Zip", "url": "https://www.7-zip.org/" }, { "name": "NanaZip", "url": "https://github.com/M2Team/NanaZip/releases" }]
+    },
+    {
+      "name": "2345浏览器",
+      "aliases": ["2345王牌浏览器", "2345加速浏览器", "2345liulanqi"],
+      "risk": "弹窗新闻、劫持主页与默认搜索引擎、静默安装兄弟产品。",
+      "alternatives": [{ "name": "Microsoft Edge", "url": "https://www.microsoft.com/edge" }, { "name": "百分浏览器", "url": "https://www.centbrowser.cn/" }]
+    },
+    {
+      "name": "2345看图王",
+      "aliases": ["2345看图", "2345图片查看器"],
+      "risk": "弹窗广告、捆绑推广、静默设为默认看图工具。",
+      "alternatives": [{ "name": "Honeyview", "url": "https://en.bandisoft.com/honeyview/" }, { "name": "ImageGlass", "url": "https://imageglass.org/download" }]
+    },
+    {
+      "name": "2345安全卫士",
+      "aliases": ["2345卫士", "2345电脑管家", "2345weishi"],
+      "risk": "弹窗新闻、开机加速全家桶、广告推送、卸载困难。",
+      "alternatives": [{ "name": "Windows Defender", "url": "https://www.microsoft.com/zh-cn/windows/windows-security" }, { "name": "火绒安全", "url": "https://www.huorong.cn/" }]
+    },
+    {
+      "name": "快压",
+      "aliases": ["kuaiya", "kuaizip", "快压压缩"],
+      "risk": "捆绑推广、弹窗广告，被多家安全厂商标记为流氓行为。",
+      "alternatives": [{ "name": "7-Zip", "url": "https://www.7-zip.org/" }, { "name": "PeaZip", "url": "https://peazip.github.io/" }]
+    },
+    {
+      "name": "360压缩",
+      "aliases": ["360zip", "360压缩软件", "360yasuо"],
+      "risk": "弹窗推广、静默安装 360 全家桶组件、后台常驻。",
+      "alternatives": [{ "name": "7-Zip", "url": "https://www.7-zip.org/" }]
+    },
+    {
+      "name": "360安全卫士",
+      "aliases": ["360", "360卫士", "360安全", "360杀毒", "360safe"],
+      "risk": "弹窗新闻、开机加速球、静默安装兄弟产品（浏览器/压缩/播放器一条龙），越装越卡，还爱改浏览器主页。",
+      "alternatives": [{ "name": "Windows Defender", "url": "https://www.microsoft.com/zh-cn/windows/windows-security" }, { "name": "火绒安全", "url": "https://www.huorong.cn/" }]
+    },
+    {
+      "name": "360浏览器",
+      "aliases": ["360极速浏览器", "360安全浏览器", "360chrome", "360liulanqi"],
+      "risk": "弹窗新闻、主页劫持、默认搜索劫持、静默推广。",
+      "alternatives": [{ "name": "Microsoft Edge", "url": "https://www.microsoft.com/edge" }]
+    },
+    {
+      "name": "360清理大师",
+      "aliases": ["360清理", "360垃圾清理", "360加速球", "360qingli"],
+      "risk": "清理效果玄学，主要作用是给你弹广告和推荐自家产品。",
+      "alternatives": [{ "name": "Geek Uninstaller", "url": "https://geekuninstaller.com/" }, { "name": "PowerToys", "url": "https://github.com/microsoft/PowerToys/releases" }]
+    },
+    {
+      "name": "360驱动大师",
+      "aliases": ["360驱动", "360驱动管家", "360qudong"],
+      "risk": "捆绑全家桶、推送不匹配驱动，装完可能蓝屏或网卡异常。",
+      "alternatives": [{ "name": "Windows 更新", "url": "https://support.microsoft.com/zh-cn/windows" }]
+    },
+    {
+      "name": "腾讯电脑管家",
+      "aliases": ["电脑管家", "qq管家", "qq电脑管家", "tencentpcmanger"],
+      "risk": "弹窗、加速球推广、静默捆绑腾讯系组件。",
+      "alternatives": [{ "name": "Windows Defender", "url": "https://www.microsoft.com/zh-cn/windows/windows-security" }, { "name": "火绒安全", "url": "https://www.huorong.cn/" }]
+    },
+    {
+      "name": "QQ浏览器",
+      "aliases": ["qqbrowser", "qq浏览器电脑版", "qqliulanqi"],
+      "risk": "弹窗新闻、主页劫持、静默推广腾讯系产品。",
+      "alternatives": [{ "name": "Microsoft Edge", "url": "https://www.microsoft.com/edge" }]
+    },
+    {
+      "name": "金山毒霸",
+      "aliases": ["duba", "kingsoft", "金山毒霸杀毒", "jinsanduba"],
+      "risk": "捆绑推广、弹窗广告、开机自启全家桶。",
+      "alternatives": [{ "name": "Windows Defender", "url": "https://www.microsoft.com/zh-cn/windows/windows-security" }, { "name": "火绒安全", "url": "https://www.huorong.cn/" }]
+    },
+    {
+      "name": "金山清理大师",
+      "aliases": ["金山清理", "猎豹清理大师", "cmcm清理", "cleanmaster"],
+      "risk": "弹窗广告、诱导安装自家产品、清理效果有限。",
+      "alternatives": [{ "name": "Geek Uninstaller", "url": "https://geekuninstaller.com/" }]
+    },
+    {
+      "name": "鲁大师",
+      "aliases": ["ludashi", "跑分软件", "娱乐大师", "鲁大师跑分"],
+      "risk": "弹窗新闻推送、后台推广、娱乐化跑分没有参考价值，还会诱导安装其他产品。",
+      "alternatives": [{ "name": "CPU-Z", "url": "https://www.cpuid.com/softwares/cpu-z.html" }, { "name": "HWiNFO", "url": "https://www.hwinfo.com/download/" }]
+    },
+    {
+      "name": "驱动精灵",
+      "aliases": ["drivergenius", "驱动精灵万能网卡版", "qudongjingling"],
+      "risk": "捆绑全家桶、会员收费诱导、胡乱推送不匹配驱动导致蓝屏风险。",
+      "alternatives": [{ "name": "Windows 更新", "url": "https://support.microsoft.com/zh-cn/windows" }, { "name": "DisplayDriverUninstaller", "url": "https://www.wagnardsoft.com/" }]
+    },
+    {
+      "name": "驱动人生",
+      "aliases": ["drivethelife", "160驱动", "驱动人生网卡版", "qudongrensheng"],
+      "risk": "同驱动精灵：捆绑推广 + 弹窗 + 驱动推送混乱。",
+      "alternatives": [{ "name": "Windows 更新", "url": "https://support.microsoft.com/zh-cn/windows" }]
+    },
+    {
+      "name": "驱动总裁",
+      "aliases": ["drvceo", "sysceo", "驱动总裁网卡版", "驱动总裁单机版", "qudongzongcai"],
+      "risk": "第三方驱动工具的典型问题：驱动版本与硬件不匹配，装完直接蓝屏/没声音/网卡消失。本机音频故障就是被这类工具搞崩的。",
+      "alternatives": [{ "name": "Windows 更新", "url": "https://support.microsoft.com/zh-cn/windows" }, { "name": "TechPowerUp 官方驱动", "url": "https://www.techpowerup.com/" }]
+    },
+    {
+      "name": "万能驱动助理",
+      "aliases": ["万能驱动", "wondrivers", "万能驱动7", "wannengqudong"],
+      "risk": "装机圈常用但有推广版本，驱动版本混杂，容易装上不匹配驱动。",
+      "alternatives": [{ "name": "Windows 更新", "url": "https://support.microsoft.com/zh-cn/windows" }]
+    },
+    {
+      "name": "Driver Booster",
+      "aliases": ["driverbooster", "iobit驱动", "iobitdriver"],
+      "risk": "IObit 出品，弹窗促销、静默捆绑、驱动推送激进。",
+      "alternatives": [{ "name": "Windows 更新", "url": "https://support.microsoft.com/zh-cn/windows" }]
+    },
+    {
+      "name": "Advanced SystemCare",
+      "aliases": ["advancedsystemcare", "iobit系统优化", "asc优化", "asc14"],
+      "risk": "弹窗推销专业版、静默安装 IObit 全家桶、所谓的优化基本无用。",
+      "alternatives": [{ "name": "Windows Defender", "url": "https://www.microsoft.com/zh-cn/windows/windows-security" }, { "name": "PowerToys", "url": "https://github.com/microsoft/PowerToys/releases" }]
+    },
+    {
+      "name": "IObit Uninstaller",
+      "aliases": ["iobituninstaller", "iobit卸载", "iobitxiezai"],
+      "risk": "卸载时会推荐自家产品、弹窗促销、静默捆绑。",
+      "alternatives": [{ "name": "Geek Uninstaller", "url": "https://geekuninstaller.com/" }]
+    },
+    {
+      "name": "IObit Malware Fighter",
+      "aliases": ["iobitmalwarefighter", "iobit杀毒", "imf杀毒"],
+      "risk": "弹窗推销、扫描结果夸大以诱导付费。",
+      "alternatives": [{ "name": "Windows Defender", "url": "https://www.microsoft.com/zh-cn/windows/windows-security" }]
+    },
+    {
+      "name": "CCleaner",
+      "aliases": ["ccleaner", "系统清理ccleaner", "垃圾清理ccleaner"],
+      "risk": "免费版弹窗推销、默认勾选附带组件；历史上曾发生过官方版本被植入恶意代码的事件。现代 Windows 并不需要注册表清理。",
+      "alternatives": [{ "name": "系统自带磁盘清理", "url": "https://support.microsoft.com/zh-cn/windows" }, { "name": "Geek Uninstaller", "url": "https://geekuninstaller.com/" }]
+    },
+    {
+      "name": "WPS Office",
+      "aliases": ["wps", "金山wps", "wps办公", "wpsoffice"],
+      "risk": "免费版弹窗广告、后台推广进程、频繁会员诱导。能忍广告的话功能本身没问题。",
+      "alternatives": [{ "name": "LibreOffice", "url": "https://zh-cn.libreoffice.org/" }, { "name": "OnlyOffice", "url": "https://www.onlyoffice.com/zh/download-desktop.aspx" }]
+    },
+    {
+      "name": "迅雷",
+      "aliases": ["thunder", "xunlei", "迅雷11", "迅雷下载", "xunlei11"],
+      "risk": "免费版广告弹窗、下载限速、捆绑推广，还会占用上传带宽。",
+      "alternatives": [{ "name": "Motrix", "url": "https://motrix.app/" }, { "name": "qBittorrent", "url": "https://www.qbittorrent.org/download" }]
+    },
+    {
+      "name": "百度网盘",
+      "aliases": ["百度云盘", "baidunetdisk", "百度云", "baiduwangpan"],
+      "risk": "非会员下载限速严重、客户端推广弹窗、诱导装全家桶。",
+      "alternatives": [{ "name": "坚果云", "url": "https://www.jianguoyun.com/" }, { "name": "阿里云盘", "url": "https://www.alipan.com/" }]
+    },
+    {
+      "name": "百度输入法",
+      "aliases": ["baidu输入法", "百度拼音", "baidushurufa"],
+      "risk": "广告弹窗、皮肤推送、后台联网、静默推广百度系产品。",
+      "alternatives": [{ "name": "微软拼音", "url": "https://support.microsoft.com/zh-cn/windows" }, { "name": "小狼毫输入法", "url": "https://rime.im/download/" }]
+    },
+    {
+      "name": "搜狗输入法",
+      "aliases": ["sogou", "搜狗拼音", "sogoushurufa"],
+      "risk": "广告弹窗（可关但默认开）、后台进程多、推广搜狗系产品。",
+      "alternatives": [{ "name": "微软拼音", "url": "https://support.microsoft.com/zh-cn/windows" }, { "name": "小狼毫输入法", "url": "https://rime.im/download/" }]
+    },
+    {
+      "name": "讯飞输入法",
+      "aliases": ["讯飞拼音", "iflytek输入法", "xunfeishurufa"],
+      "risk": "广告弹窗、推广讯飞系产品、皮肤商城推送。",
+      "alternatives": [{ "name": "微软拼音", "url": "https://support.microsoft.com/zh-cn/windows" }, { "name": "小狼毫输入法", "url": "https://rime.im/download/" }]
+    },
+    {
+      "name": "酷狗音乐",
+      "aliases": ["kugou", "酷狗音乐电脑版", "酷狗"],
+      "risk": "开屏广告、弹窗推广、直播入口诱导、后台常驻。",
+      "alternatives": [{ "name": "网易云音乐", "url": "https://music.163.com/" }, { "name": "Spotify", "url": "https://www.spotify.com/download/windows/" }]
+    },
+    {
+      "name": "酷我音乐",
+      "aliases": ["kuwo", "酷我音乐盒", "kuwoyinyue"],
+      "risk": "开屏广告、弹窗推广、诱导装全家桶。",
+      "alternatives": [{ "name": "网易云音乐", "url": "https://music.163.com/" }, { "name": "Spotify", "url": "https://www.spotify.com/download/windows/" }]
+    },
+    {
+      "name": "QQ音乐",
+      "aliases": ["qqmusic", "qq音乐pc版", "qqyinyue"],
+      "risk": "弹窗推广、诱导登录/开会员、后台常驻进程。",
+      "alternatives": [{ "name": "网易云音乐", "url": "https://music.163.com/" }, { "name": "Spotify", "url": "https://www.spotify.com/download/windows/" }]
+    },
+    {
+      "name": "美图秀秀",
+      "aliases": ["meitu", "美图秀秀电脑版", "meituxiuxiu"],
+      "risk": "开屏广告、弹窗推广、诱导装美图系产品。",
+      "alternatives": [{ "name": "GIMP", "url": "https://www.gimp.org/downloads/" }, { "name": "Paint.NET", "url": "https://www.getpaint.net/download.html" }]
+    },
+    {
+      "name": "格式工厂",
+      "aliases": ["formatfactory", "格式工厂转换器", "geshigongchang"],
+      "risk": "安装捆绑、运行时弹窗广告、转换速度一般。",
+      "alternatives": [{ "name": "HandBrake", "url": "https://handbrake.fr/downloads.php" }, { "name": "Shutter Encoder", "url": "https://www.shutterencoder.com/" }]
+    },
+    {
+      "name": "光影魔术手",
+      "aliases": ["光影魔术", "nEOiMAGING", "guangyingmoshushou"],
+      "risk": "捆绑安装、弹窗广告、推广自家产品。",
+      "alternatives": [{ "name": "GIMP", "url": "https://www.gimp.org/downloads/" }, { "name": "ImageGlass", "url": "https://imageglass.org/download" }]
+    },
+    {
+      "name": "暴风影音",
+      "aliases": ["暴风", "baofeng", "暴风影音5", "baofengyingyin"],
+      "risk": "弹窗广告鼻祖级产品、后台常驻、捆绑推广。",
+      "alternatives": [{ "name": "VLC", "url": "https://www.videolan.org/vlc/" }, { "name": "PotPlayer", "url": "https://potplayer.daum.net/" }]
+    },
+    {
+      "name": "迅捷PDF转换器",
+      "aliases": ["迅捷pdf", "pdf转换器免费", "xunjiepdf"],
+      "risk": "先免费后收费套路、安装捆绑、弹窗推广。PDF 转换需求用开源工具能免费解决。",
+      "alternatives": [{ "name": "PDF24", "url": "https://tools.pdf24.org/zh/creator" }, { "name": "LibreOffice", "url": "https://zh-cn.libreoffice.org/" }]
+    },
+    {
+      "name": "Foxit Reader",
+      "aliases": ["foxit", "福昕阅读器", "foxitreader", "fuxinyuedu"],
+      "risk": "安装时默认勾选附加组件与浏览器工具栏、启动广告、频繁弹升级付费提示。",
+      "alternatives": [{ "name": "SumatraPDF", "url": "https://www.sumatrapdfreader.org/download-free-pdf-viewer" }, { "name": "PDF24", "url": "https://tools.pdf24.org/zh/creator" }]
+    },
+    {
+      "name": "墨迹天气",
+      "aliases": ["墨迹天气电脑版", "moji天气", "mojiweather"],
+      "risk": "广告弹窗、新闻推送、后台常驻，看天气用浏览器就够了。",
+      "alternatives": [{ "name": "系统天气/网页", "url": "https://weather.com/zh-CN/" }]
+    },
+    {
+      "name": "桌面美化类软件",
+      "aliases": ["好桌道", "桌面天气秀", "鱼鱼桌面秀", "360壁纸", "搜狗壁纸", "小鸟壁纸", "haozhudao"],
+      "risk": "静默改壁纸/锁屏、弹窗推广、后台常驻占用资源。",
+      "alternatives": [{ "name": "Lively Wallpaper", "url": "https://rocksdanister.github.io/lively/" }, { "name": "Rainmeter", "url": "https://www.rainmeter.net/" }]
+    },
+    {
+      "name": "手机助手类软件",
+      "aliases": ["应用宝", "豌豆荚", "91助手", "360手机助手", "腾讯手机管家", "yingyongbao"],
+      "risk": "捆绑推广、弹窗广告、静默给手机装应用。手机端自己装应用更干净。",
+      "alternatives": [{ "name": "手机官方应用商店", "url": "https://www.apple.com.cn/app-store/" }]
+    },
+    {
+      "name": "iOS助手类软件",
+      "aliases": ["爱思助手", "pp助手", "itools", "同步助手", "快用苹果助手", "aisizhushou"],
+      "risk": "捆绑推广、弹窗广告、越狱诱导，存在隐私风险。",
+      "alternatives": [{ "name": "iTunes 官方", "url": "https://www.apple.com.cn/itunes/" }]
+    },
+    {
+      "name": "第三方刷机工具",
+      "aliases": ["刷机精灵", "刷机大师", "卓大师", "甜椒刷机", "奇兔刷机", "shuajizhushou"],
+      "risk": "捆绑推广、广告弹窗，刷机本身有变砖风险，建议用官方工具。",
+      "alternatives": [{ "name": "手机厂商官方工具", "url": "https://www.miui.com/" }]
+    },
+    {
+      "name": "U盘装机工具",
+      "aliases": ["大白菜u盘", "老毛桃", "u深度", "u启动", "电脑店u盘", "dabaicai"],
+      "risk": "装机工具重灾区：静默安装自家推广软件、篡改浏览器主页、PE 里夹带推广。",
+      "alternatives": [{ "name": "微PE工具箱", "url": "https://www.wepe.com.cn/download.html" }, { "name": "Ventoy", "url": "https://www.ventoy.net/cn/download.html" }]
+    },
+    {
+      "name": "ToDesk",
+      "aliases": ["todesk", "todesk远程", "todesk远程控制"],
+      "risk": "免费版限速、广告弹窗、诱导开会员；远程控制软件权限极高，建议用开源方案。",
+      "alternatives": [{ "name": "RustDesk", "url": "https://rustdesk.com/zh/" }, { "name": "AnyDesk", "url": "https://anydesk.com/zhs/downloads" }]
+    },
+    {
+      "name": "向日葵远程控制",
+      "aliases": ["向日葵", "sunlogin", "向日葵远程", "xiangrikui"],
+      "risk": "免费版广告弹窗、限速诱导付费；历史上出现过安全漏洞争议。",
+      "alternatives": [{ "name": "RustDesk", "url": "https://rustdesk.com/zh/" }, { "name": "AnyDesk", "url": "https://anydesk.com/zhs/downloads" }]
+    },
+    {
+      "name": "WeGame",
+      "aliases": ["wegame", "腾讯游戏平台", "tgp", "wegame平台"],
+      "risk": "弹窗推广、游戏广告、后台常驻、强制更新。",
+      "alternatives": [{ "name": "Steam", "url": "https://store.steampowered.com/about/" }, { "name": "Epic Games", "url": "https://store.epicgames.com/zh-CN/download" }]
+    },
+    {
+      "name": "希沃 EasiUpdate",
+      "aliases": ["seewo", "easiupdate", "希沃助手", "xiwozhushou"],
+      "risk": "教育场景软件常见的捆绑：装多个后台服务常驻、静默更新、卸载困难。",
+      "alternatives": [{ "name": "按需从官网单独下载", "url": "https://www.seewo.com/" }]
+    },
+    {
+      "name": "Avast 免费版",
+      "aliases": ["avast", "avg", "avastfree", "avg免费", "avast杀毒"],
+      "risk": "弹窗推销付费版、数据收集争议（曾出售用户浏览数据）、静默捆绑浏览器扩展。",
+      "alternatives": [{ "name": "Windows Defender", "url": "https://www.microsoft.com/zh-cn/windows/windows-security" }, { "name": "火绒安全", "url": "https://www.huorong.cn/" }]
+    },
+    {
+      "name": "McAfee 迈克菲",
+      "aliases": ["mcafee", "迈克菲", "迈克菲杀毒", "maikefei"],
+      "risk": "常随新机预装、弹窗续费提醒不断、卸载后留残留服务。",
+      "alternatives": [{ "name": "Windows Defender", "url": "https://www.microsoft.com/zh-cn/windows/windows-security" }]
+    },
+    {
+      "name": "系统优化大师类",
+      "aliases": ["windows优化大师", "系统优化大师", "超级兔子", "魔法兔子", "电脑诊所"],
+      "risk": "这类「一键优化」工具几乎都是弹窗推广载体，改动的设置反而可能让系统不稳定。",
+      "alternatives": [{ "name": "系统自带设置 + PowerToys", "url": "https://github.com/microsoft/PowerToys/releases" }]
+    }
+  ],
+
+  "viruslist": [
+    {
+      "name": "激活/破解类工具",
+      "patterns": ["激活工具", "kms激活", "破解激活", "小马激活", "激活精灵", "永久激活", "数字激活", "office激活", "windows激活工具", "kmsauto", "hwid", "tsforge"],
+      "risk": "激活/破解工具是木马重灾区：挖矿、盗号、远控、勒索软件经常伪装成激活工具传播。强烈不建议安装。"
+    },
+    {
+      "name": "破解版软件",
+      "patterns": ["破解版", "绿色破解", "汉化破解", "注册机", "免安装破解", "crack版", "patch版", "keygen"],
+      "risk": "破解软件常被二次打包植入木马后门，来源不可信，杀毒软件也会真报毒。"
+    },
+    {
+      "name": "外挂/作弊器",
+      "patterns": ["外挂", "作弊器", "辅助器", "脱机挂", "自瞄", "透视挂", "自动打怪", "脚本挂"],
+      "risk": "外挂普遍捆绑木马（盗号 + 远控），还有封号风险。双重危险。"
+    },
+    {
+      "name": "蹭网/WiFi破解类",
+      "patterns": ["wifi破解", "蹭网", "万能钥匙pc", "wifi钥匙电脑版", "密码破解wifi", "字典破解wifi"],
+      "risk": "蹭网工具多为流氓软件或木马，还会把你自己的 WiFi 密码上传到服务器。"
+    },
+    {
+      "name": "假冒 Flash Player 更新",
+      "patterns": ["flashplayer中国版", "flashplayer更新", "flash助手", "flash大厅", "flash修复"],
+      "risk": "Adobe Flash 已停止支持，所有「Flash 更新/修复」程序基本都是广告软件或木马载体。"
+    },
+    {
+      "name": "假冒运行库修复工具",
+      "patterns": ["java更新助手", "运行库修复大师", "dll修复大师", "netframework修复", "组件修复工具"],
+      "risk": "打着「修复运行库」旗号的小工具，多为广告推广或木马，真缺组件去微软官网下。"
+    },
+    {
+      "name": "假冒杀毒/系统急救",
+      "patterns": ["系统杀毒大师", "电脑医生", "系统修复大师", "装机大师", "电脑维护大师", "系统急救箱"],
+      "risk": "假冒安全软件会谎报病毒恐吓付费，或直接捆绑木马。"
+    },
+    {
+      "name": "假冒视频解码器/播放器",
+      "patterns": ["万能解码器", "播放器解码包", "成人播放器", "色播", "快播", "影音先锋", "tml播放器"],
+      "risk": "这类播放器/解码包常伪装成「看片必备」，实则推送广告、窃取信息或捆绑木马。"
+    },
+    {
+      "name": "挖矿/网赚类",
+      "patterns": ["挖矿软件", "eth挖矿", "btc挖矿", "自动赚钱", "挂机赚钱", "网赚软件", "刷金币", "矿机软件"],
+      "risk": "多半是「帮你赚钱、实则用你电脑挖矿」，电费和硬件损耗你自己扛，还有木马风险。"
+    },
+    {
+      "name": "勒索/加密解密类",
+      "patterns": ["解密大师", "勒索解密", "wannacry", "文件解密工具", "比特币解锁"],
+      "risk": "所谓「解密工具」本身常常就是勒索产业链的一环，中招后应找安全厂商或专业机构处理。"
+    },
+    {
+      "name": "远控木马/免杀工具",
+      "patterns": ["免杀", "过杀毒", "远控免杀", "上线器", "后门工具", "远控生成器", "小马远控"],
+      "risk": "制作/使用远控木马属于违法犯罪行为，且这类工具本身 100% 被同行二次打包过毒。"
+    },
+    {
+      "name": "盗号/社工类",
+      "patterns": ["盗号", "qq盗号", "盗号软件", "密码破解器", "社工库", "撞库工具", "免密登录器"],
+      "risk": "盗号工具违法，且绝大多数是骗子在钓鱼——装了先被盗的是你自己。"
+    },
+    {
+      "name": "游戏私服/私服登录器",
+      "patterns": ["私服", "私服登录器", "sf登录器", "传奇私服", "热血传奇私服", "一键端", "gm工具"],
+      "risk": "私服登录器是木马最常见的伪装之一，还涉及侵权。"
+    },
+    {
+      "name": "秒杀/抢票/刷量类",
+      "patterns": ["秒杀器", "抢票神器", "刷单", "刷量", "刷赞", "刷播放", "刷粉", "自动下单"],
+      "risk": "这类工具普遍要求账号密码，等于把账号交给陌生人，且多数捆绑木马。"
+    },
+    {
+      "name": "购物返利/比价外挂",
+      "patterns": ["返利神器", "领券插件", "比价外挂", "自动领红包", "内部券"],
+      "risk": "浏览器外挂类插件会读取你的全部网页内容（含银行/支付页面），风险极高。"
+    },
+    {
+      "name": "来路不明的刷机包/固件",
+      "patterns": ["破解固件", "第三方刷机包", "免root", "一键root", "刷机包下载", "盒子刷机包"],
+      "risk": "非官方固件可能内置后门或挖矿程序，变砖是小事，被植入持久化木马才麻烦。"
+    },
+    {
+      "name": "假冒银行/支付插件",
+      "patterns": ["网银助手破解", "支付插件破解", "u盾助手", "网银控件修复"],
+      "risk": "涉及资金的插件必须来自银行官网，第三方版本几乎都是钓鱼工具。"
+    },
+    {
+      "name": "来路不明的代理/VPN 工具",
+      "patterns": ["翻墙软件", "vpn下载", "加速器破解", "梯子下载", "节点分享软件"],
+      "risk": "来路不明的代理工具会接管你全部流量，等于把上网数据交给陌生人，还可能违反当地法规。请通过合规渠道与可信服务商获取。"
+    }
+  ]
+}

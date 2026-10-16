@@ -1,0 +1,42 @@
+appId: cn.chuanzhi.jingzhuang
+productName: 净装
+copyright: Copyright © 2026 衰气的船只
+directories:
+  output: dist
+  buildResources: build
+files:
+  - src/**/*
+  - defaults/**/*
+  - package.json
+extraResources:
+  - from: resources/geek.exe
+    to: geek.exe
+win:
+  icon: build/icon.ico
+  target:
+    - target: nsis
+      arch:
+        - x64
+# ===== 微软商店（MSIX/APPX）配置 =====
+# 上传商店前，把下面三项换成合作伙伴中心给你的真实值，详见 STORE.md
+appx:
+  applicationId: JingZhuang
+  identityName: REPLACE_ME.JingZhuang          # 合作伙伴中心「产品标识」里的 Identity Name
+  publisher: CN=REPLACE-ME-PUBLISHER-ID        # 合作伙伴中心给你的 Publisher ID（CN=... 格式）
+  publisherDisplayName: 衰气的船只
+  displayName: 净装
+  backgroundColor: '#0e8a6d'
+  languages:
+    - zh-CN
+  showNameOnTiles: true
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: 净装
+  uninstallDisplayName: 净装
+  deleteAppDataOnUninstall: false
+  artifactName: JingZhuang-Setup-${version}.exe

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: file:; connect-src 'self'; script-src 'self'">
+<title>净装</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+<div id="bgLayer"></div>
+<div id="bgOverlay"></div>
+
+<div id="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-logo">🛡️</span>
+      <span class="brand-name">净装</span>
+      <span class="brand-sub">AI 软件净装助手</span>
+      <span id="aiStatus" class="pill" title="点击配置 AI">AI 未配置</span>
+    </div>
+    <div class="top-actions">
+      <button id="btnGeek" class="btn ghost" title="打开 Geek Uninstaller 卸载软件">🧹 Geek 卸载</button>
+      <button id="btnSettings" class="btn ghost" title="设置">⚙️ 设置</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ 主页 ============ -->
+    <section id="viewHome">
+      <div class="hero" id="hero">
+        <h1>想装什么软件，说人话就行</h1>
+        <p class="muted">只去官网下载 · 自动校验安全 · 拒绝流氓捆绑</p>
+        <div class="searchbox">
+          <input id="searchInput" type="text" placeholder="输入软件名或功能，如：微信 / 能压缩文件的软件" autocomplete="off" spellcheck="false">
+          <button id="btnSearch" class="btn primary">🔍 找一下</button>
+        </div>
+        <div id="quickChips" class="chips"></div>
+      </div>
+
+      <div id="flowArea" class="flow hidden">
+        <div class="row-between">
+          <h3 id="flowTitle">正在处理</h3>
+          <button id="btnCancelFlow" class="btn ghost sm">✕ 取消</button>
+        </div>
+        <div id="timeline" class="timeline"></div>
+        <div id="aiTextBlock" class="ai-text hidden">
+          <div class="ai-text-head" id="aiTextHead">▸ AI 想法</div>
+          <div class="ai-text-body" id="aiTextBody"></div>
+        </div>
+        <div id="cards"></div>
+      </div>
+
+      <div id="historyBlock">
+        <div class="row-between">
+          <h3>最近记录</h3>
+          <button id="btnClearHistory" class="btn ghost sm">清空</button>
+        </div>
+        <div id="historyList" class="history"></div>
+      </div>
+    </section>
+
+    <!-- ============ 设置 ============ -->
+    <section id="viewSettings" class="hidden">
+      <div class="settings-wrap">
+        <div class="row-between">
+          <h2>设置</h2>
+          <button id="btnBackHome" class="btn ghost">← 返回</button>
+        </div>
+
+        <div class="tabs" id="settingsTabs">
+          <button class="tab active" data-tab="ai">AI 服务</button>
+          <button class="tab" data-tab="lists">名单管理</button>
+          <button class="tab" data-tab="look">外观主题</button>
+          <button class="tab" data-tab="about">关于</button>
+        </div>
+
+        <!-- AI -->
+        <div id="tab-ai" class="tabpane">
+          <div class="card">
+            <h3>查找方式</h3>
+            <label class="row gap" style="align-items:flex-start;margin-bottom:8px">
+              <input type="checkbox" id="wingetEnabled" style="width:auto;margin-top:3px">
+              <span>
+                <b>优先用 winget 官方索引（推荐）</b>
+                <div class="hint">winget 是微软官方包管理器，清单由微软人工审核。命中后直接拿到官方直链 + 官方 SHA256，不调用 AI、不花钱，还比模型猜的 URL 更准。查不到再交给 AI。</div>
+              </span>
+            </label>
+            <div class="hint" id="wingetStatus">检测中…</div>
+          </div>
+          <div class="card">
+            <h3>AI 服务配置（OpenAI 兼容接口）</h3>
+            <div class="field">
+              <label>服务商预设</label>
+              <select id="aiPreset"></select>
+              <div class="hint" id="presetTip"></div>
+            </div>
+            <div class="field">
+              <label>接口地址 Base URL</label>
+              <input id="aiBaseUrl" type="text" placeholder="https://api.deepseek.com/v1" spellcheck="false">
+            </div>
+            <div class="field">
+              <label>API Key</label>
+              <div class="row">
+                <input id="aiKey" type="password" class="grow" placeholder="sk-..." spellcheck="false">
+                <button id="btnToggleKey" class="btn ghost">显示</button>
+              </div>
+            </div>
+            <div class="field">
+              <label>模型名称</label>
+              <input id="aiModel" type="text" list="modelList" placeholder="deepseek-chat" spellcheck="false">
+              <datalist id="modelList"></datalist>
+            </div>
+            <div class="row gap">
+              <button id="btnSaveAI" class="btn primary">保存</button>
+              <button id="btnTestAI" class="btn">测试连接</button>
+              <span id="aiTestResult" class="hint"></span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>实惠服务商注册教程</h3>
+            <p class="muted sm-txt">价格与免费额度以各官网为准。注册 → 实名 → 创建 API Key → 粘贴到上面即可。</p>
+            <div id="tutorials"></div>
+          </div>
+        </div>
+
+        <!-- 名单 -->
+        <div id="tab-lists" class="tabpane hidden">
+          <div class="card">
+            <div class="row-between">
+              <h3>名单管理</h3>
+              <div class="row gap">
+                <button id="btnOpenListsFolder" class="btn ghost sm">打开配置文件夹</button>
+                <button id="btnResetLists" class="btn ghost sm">恢复默认名单</button>
+              </div>
+            </div>
+            <div class="field">
+              <label>暗号（病毒名单二次确认口令）</label>
+              <input id="secretCode" type="text" spellcheck="false">
+            </div>
+            <div class="subtabs" id="listSubTabs">
+              <button class="subtab active" data-sub="whitelist">✅ 白名单</button>
+              <button class="subtab" data-sub="blacklist">⚠️ 黑名单</button>
+              <button class="subtab" data-sub="viruslist">☠️ 病毒名单</button>
+            </div>
+            <div id="listEditor"></div>
+            <div class="row gap" style="margin-top:12px">
+              <button id="btnAddEntry" class="btn">＋ 新增条目</button>
+              <button id="btnSaveLists" class="btn primary">保存全部</button>
+              <span id="listsSaveResult" class="hint"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 外观 -->
+        <div id="tab-look" class="tabpane hidden">
+          <div class="card">
+            <h3>外观主题</h3>
+            <div class="field">
+              <label>主题模式</label>
+              <div class="row gap" id="themeModeRow">
+                <label class="radio"><input type="radio" name="themeMode" value="light"> 亮色</label>
+                <label class="radio"><input type="radio" name="themeMode" value="dark"> 暗色</label>
+                <label class="radio"><input type="radio" name="themeMode" value="auto"> 跟随系统</label>
+              </div>
+            </div>
+            <div class="field">
+              <label>主题色</label>
+              <div class="row gap" id="accentRow"></div>
+              <div class="row gap" style="margin-top:8px">
+                <input type="color" id="accentCustom" value="#0e8a6d">
+                <span class="hint">自定义颜色</span>
+              </div>
+            </div>
+            <div class="field">
+              <label>背景图片</label>
+              <div class="row gap">
+                <button id="btnPickBg" class="btn">选择图片…</button>
+                <button id="btnClearBg" class="btn ghost">清除背景</button>
+              </div>
+            </div>
+            <div class="field">
+              <label>背景遮罩强度 <span id="bgDimVal" class="hint">55%</span></label>
+              <input type="range" id="bgDim" min="0" max="85" value="55">
+            </div>
+          </div>
+        </div>
+
+        <!-- 关于 -->
+        <div id="tab-about" class="tabpane hidden">
+          <div class="card" id="aboutCard">加载中…</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="js/api.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/agent.js"></script>
+<script src="js/cards.js"></script>
+<script src="js/lists-ui.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
