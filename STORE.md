@@ -326,24 +326,33 @@ This is an intentional design for Store policy compliance, not a missing feature
 
 > 程序包接受警告：The following restricted capabilities require approval before you can use them in your app: runFullTrust.
 
-提交时需要填写用途说明，**直接复制这段**：
+提交时需要填写用途说明（页面位置：**提交选项 → 受限的功能**，字段「为何需要使用 runFullTrust 功能，如何在产品中使用？」），**直接复制这段**：
 
 ```
-本产品是一个 Windows 桌面应用程序（基于 Electron 构建，入口点 Windows.FullTrustApplication），
-以完整信任级别运行，因此需要 runFullTrust 能力。
+本产品「净装」是一个基于 Electron 构建的 Windows 桌面应用程序，以入口点
+Windows.FullTrustApplication 运行，因此需要 runFullTrust 能力。
 
-具体用途：
-1. 运行本地原生桌面界面。Electron 渲染进程需要完整信任级别才能创建窗口、
-   读写用户配置目录（%APPDATA%\jingzhuang）；
-2. 调用 Windows 系统接口校验安装包的 Authenticode 数字签名与 SHA-256 哈希，
-   用于判断软件来源是否可信；
-3. 将用户主动请求下载的官方安装包保存到应用自身的私有目录。
+一、为什么需要
+Electron 应用由一个原生主进程和一个 Chromium 渲染进程组成，必须运行在完整信任
+级别下才能创建桌面窗口、加载本地界面资源并访问用户配置目录；若以较低信任级别
+运行，应用将无法启动。
 
-本应用未申请 broadFileSystemAccess 等其他受限能力，不访问与功能无关的用户文件；
-商店版本不会运行任何下载到的可执行文件，安装行为完全由用户自行决定。
+二、在产品中如何使用
+1. 界面运行：创建应用主窗口、读取随包分发的本地 HTML/CSS/JS 资源，将用户设置
+   与软件名单读写到 %APPDATA%\jingzhuang；
+2. 安全校验：调用 Windows 系统接口读取安装包的 Authenticode 数字签名与证书
+   发布者，并计算其 SHA-256 哈希，用于判断下载来源是否可信；
+3. 文件保存：将用户主动请求下载的官方安装包保存到应用自身的私有目录，或保存到
+   用户在设置中显式指定的目录（经系统文件选择器授权）。
+
+三、权限最小化说明
+本产品未申请 broadFileSystemAccess 及其他任何受限能力，不读取与功能无关的用户
+文件，不上传用户数据（无遥测、无统计、无广告组件）。商店版本不会运行任何下载到
+的可执行文件，是否安装完全由用户自行决定。
 ```
 
-> `runFullTrust` 对桌面桥应用属常见申请，通常会自动通过；如实说明用途即可。
+> ⚠️ 不要试图"把 runFullTrust 从清单里删掉"来绕过审批 —— Electron 应用没有它根本起不来。
+> 该能力对桌面桥应用属常规申请，如实说明用途通常即可通过。
 
 ### 10.4 认证前自查
 
