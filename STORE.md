@@ -320,14 +320,30 @@ This is an intentional design for Store policy compliance, not a missing feature
 
 > **不要照抄 7-Zip / 记事本这类软件的"极低要求"**：Electron 应用自带整个 Chromium 运行时，内存与磁盘占用天然高于原生小程序。填得过低，用户装在 2 GB 老机器上体验会很差，差评也会算到你头上。
 
-**关于受限能力申报**：包内声明了 `runFullTrust`（完全信任）能力——这是 Electron / 桌面桥应用的必需项。提交时若被要求填写用途，这样说明：
+**关于受限能力申报**：包内声明了 `runFullTrust`（完全信任）能力——这是 Electron / 桌面桥应用的必需项。
+
+上传包后商店会给一条**警告**（不是错误，可以继续）：
+
+> 程序包接受警告：The following restricted capabilities require approval before you can use them in your app: runFullTrust.
+
+提交时需要填写用途说明，**直接复制这段**：
 
 ```
-本产品为基于 Electron 的桌面应用（Windows.FullTrustApplication），
-需要 runFullTrust 能力以作为原生 Win32 桌面程序运行。
-本版本未使用任何受限文件系统能力（未申请 broadFileSystemAccess），
-下载文件默认写入应用自身私有目录。
+本产品是一个 Windows 桌面应用程序（基于 Electron 构建，入口点 Windows.FullTrustApplication），
+以完整信任级别运行，因此需要 runFullTrust 能力。
+
+具体用途：
+1. 运行本地原生桌面界面。Electron 渲染进程需要完整信任级别才能创建窗口、
+   读写用户配置目录（%APPDATA%\jingzhuang）；
+2. 调用 Windows 系统接口校验安装包的 Authenticode 数字签名与 SHA-256 哈希，
+   用于判断软件来源是否可信；
+3. 将用户主动请求下载的官方安装包保存到应用自身的私有目录。
+
+本应用未申请 broadFileSystemAccess 等其他受限能力，不访问与功能无关的用户文件；
+商店版本不会运行任何下载到的可执行文件，安装行为完全由用户自行决定。
 ```
+
+> `runFullTrust` 对桌面桥应用属常见申请，通常会自动通过；如实说明用途即可。
 
 ### 10.4 认证前自查
 
@@ -535,3 +551,44 @@ npm run store:check        # 确认凭据与产品 ID 可用
 
 - 「整合了生成式 AI 功能」→ 对应政策 **11.16**，必勾，且要保证上面 ④ 满足
 - 「依赖非 Microsoft 驱动程序或 NT 服务」→ 对应政策 **10.2.4**，我们不依赖，不勾
+
+---
+
+## 13. 提交实录（2026-10-17，首次上架）
+
+### 13.1 本产品真实标识（已填入 electron-builder.yml）
+
+| 项 | 值 |
+|---|---|
+| 产品显示名 | 净装 |
+| Package/Identity/Name | `31096ADE.1281421F2F1D5` |
+| Publisher | `CN=EDFD9F3C-211F-42CA-B6B9-3A9E55BEEEBC` |
+| 期望的 Package Family Name | `31096ADE.1281421F2F1D5_gxff8jaa3y6r0` |
+| Product ID（`scripts/.store.json` 用） | 见合作伙伴中心「产品标识」页 |
+
+> 中文产品名无法直接进入 Identity Name（只允许字母数字/点/短横线），
+> 合作伙伴中心会自动转成哈希形式 —— 这是正常的，不是出错。
+
+### 13.2 上传包时踩到的坑（按出现顺序）
+
+1. **占位符包被拒**：用 `REPLACEME` 占位打的包上传后报三条错误
+   （无效的标识名称 / 系列名称 / 发布者名称）。
+   💡 **报错会直接给出正确值**，照着改 `electron-builder.yml` 重打包即可。
+2. **旧包必须删掉**：只要列表里还留着一个校验失败的包，
+   页面会一直提示「提交之前必须修复所有程序包验证错误」，挡住提交。
+   点该包行尾的 **Delete** 删除。
+3. **设备系列只能勾 Desktop**：勾了 Xbox/Mobile/Team 会报
+   「必须支持选定的每个设备系列…请面向 Xbox 设备系列」。
+   我们的 `TargetDeviceFamily` 只有 `Windows.Desktop`，只勾 **Windows 10/11 Desktop**。
+4. **runFullTrust 警告**：属警告非错误，提交时按要求填用途说明（话术见 10.3）。
+
+### 13.3 提交前检查清单
+
+- [ ] 包列表中只剩**一个**包，且无红色错误
+- [ ] 设备系列仅勾选 Windows 10/11 Desktop
+- [ ] 商店列表：描述、6 张以上截图、商店徽标
+- [ ] 年龄分级问卷已完成
+- [ ] 产品声明四项已按第 10.1 节勾选
+- [ ] 隐私政策 URL 已填：https://sqdcz.github.io/jingzhuang/privacy.html
+- [ ] 系统要求已按 10.3 节填写
+- [ ] 认证说明已粘贴 10.2 节的双语文案
