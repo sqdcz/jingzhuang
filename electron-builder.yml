@@ -29,8 +29,9 @@ win:
 appx:
   applicationId: JingZhuang
   # 注意：identityName 只允许「字母数字 + 点 + 短横线」，不能有下划线/中文/空格
-  identityName: REPLACEME.JingZhuang           # 合作伙伴中心「产品标识」里的 Identity Name
-  publisher: CN=REPLACEME-PUBLISHER-ID         # 合作伙伴中心给你的 Publisher ID（CN=... 格式）
+  # 中文产品名会被合作伙伴中心自动转成哈希形式，这是正常的
+  identityName: 31096ADE.1281421F2F1D5          # 合作伙伴中心「产品标识」里的 Identity Name
+  publisher: CN=EDFD9F3C-211F-42CA-B6B9-3A9E55BEEEBC   # 合作伙伴中心「产品标识」里的 Publisher
   # 最低系统版本：electron-builder 默认写死 10.0.14316.0（2016 年的 Win10 预览版），
   # 远低于 Electron 33 / Chromium 实际能跑的下限，会让不兼容的系统装上却打不开。
   # 这里对齐真实下限 Windows 10 1809，并与商店表单里填的「系统要求」保持一致。
