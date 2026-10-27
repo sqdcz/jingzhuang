@@ -1,0 +1,22 @@
+{
+  "name": "jingzhuang-promo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "净装宣传片（Remotion）",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "still": "remotion still src/index.ts",
+    "render": "remotion render src/index.ts"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.409",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.409"
+  },
+  "devDependencies": {
+    "typescript": "5.6.3",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1"
+  }
+}

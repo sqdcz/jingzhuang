@@ -9,3 +9,9 @@ resources/geek.exe
 scripts/.store.json
 # 发布说明草稿（内容已发布到 GitHub Release）
 .release-notes.md
+
+# 宣传片工程（Remotion）：只提交源码
+promo/node_modules/
+promo/bundle/
+promo/out/
+promo/build_dev_*/
