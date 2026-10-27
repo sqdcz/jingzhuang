@@ -1,6 +1,7 @@
 import React from 'react'
 import { AbsoluteFill, interpolate, useCurrentFrame } from 'remotion'
 import { Bg, H1, Reveal, Shield, Sub } from '../lib'
+import { CharReveal } from '../Fx'
 import { C, F } from '../theme'
 
 const CL = { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' } as const
@@ -38,11 +39,9 @@ export const Intro: React.FC = () => {
             </div>
           </Reveal>
 
-          <Reveal delay={24} y={30}>
-            <H1 size={168} style={{ letterSpacing: 10 }}>
-              净装
-            </H1>
-          </Reveal>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 6 }}>
+            <CharReveal text="净装" size={168} delay={24} stagger={7} spacing={12} />
+          </div>
 
           <Reveal delay={42}>
             <Sub size={42} style={{ marginTop: 12, color: C.text }}>

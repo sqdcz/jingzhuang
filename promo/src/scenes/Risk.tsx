@@ -204,10 +204,10 @@ const Viruslist: React.FC = () => {
 export const Risk: React.FC = () => {
   return (
     <Bg glow={C.warn} intensity={0.5}>
-      <Sequence from={0} durationInFrames={240}>
+      <Sequence from={0} durationInFrames={300}>
         <Blacklist />
       </Sequence>
-      <Sequence from={240} durationInFrames={240}>
+      <Sequence from={300} durationInFrames={300}>
         <Viruslist />
       </Sequence>
     </Bg>

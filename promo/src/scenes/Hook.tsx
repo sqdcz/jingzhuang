@@ -1,6 +1,7 @@
 import React from 'react'
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion'
-import { Bg, H1, Kicker, Reveal, Wipe } from '../lib'
+import { Bg, Wipe } from '../lib'
+import { CharReveal, GlitchText } from '../Fx'
 import { C, F } from '../theme'
 
 const LABELS = [
@@ -76,7 +77,7 @@ const Button: React.FC<{ label: string; i: number }> = ({ label, i }) => {
 export const Hook: React.FC = () => {
   const f = useCurrentFrame()
 
-  const flash = interpolate(f, [196, 202, 210], [0, 0.85, 0], {
+  const flash = interpolate(f, [226, 232, 240], [0, 0.85, 0], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   })
@@ -95,22 +96,18 @@ export const Hook: React.FC = () => {
       {/* 主文案 */}
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ textAlign: 'center' }}>
-          <Reveal delay={84} y={40}>
-            <H1 size={96} style={{ color: C.text }}>
-              你点的那个「下载」
-            </H1>
-          </Reveal>
-          <Reveal delay={132} y={54}>
-            <H1 size={158} style={{ marginTop: 12, color: C.danger }}>
-              是官网吗？
-            </H1>
-          </Reveal>
+          <CharReveal text="你点的那个「下载」" size={96} delay={96} stagger={3} color={C.text} />
+          <div style={{ marginTop: 12 }}>
+            <GlitchText at={170} frames={7}>
+              <CharReveal text="是官网吗？" size={158} delay={148} stagger={4} color={C.danger} />
+            </GlitchText>
+          </div>
           <div
             style={{
               height: 6,
               marginTop: 10,
               background: C.danger,
-              width: `${interpolate(f, [150, 178], [0, 62], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' })}%`,
+              width: `${interpolate(f, [168, 200], [0, 62], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' })}%`,
               boxShadow: `0 0 30px ${C.danger}`,
               marginLeft: 'auto',
               marginRight: 'auto',
@@ -119,7 +116,7 @@ export const Hook: React.FC = () => {
         </div>
       </AbsoluteFill>
 
-      <Wipe at={198} color={C.danger} />
+      <Wipe at={228} color={C.danger} />
       <AbsoluteFill style={{ background: '#fff', opacity: flash }} />
     </Bg>
   )

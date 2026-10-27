@@ -230,13 +230,13 @@ const CloudScan: React.FC = () => {
 export const Verify: React.FC = () => {
   return (
     <Bg glow={C.green} intensity={0.55}>
-      <Sequence from={0} durationInFrames={260}>
+      <Sequence from={0} durationInFrames={320}>
         <Signature />
       </Sequence>
-      <Sequence from={260} durationInFrames={260}>
+      <Sequence from={320} durationInFrames={320}>
         <Hash />
       </Sequence>
-      <Sequence from={520} durationInFrames={260}>
+      <Sequence from={640} durationInFrames={320}>
         <CloudScan />
       </Sequence>
     </Bg>

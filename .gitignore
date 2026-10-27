@@ -15,3 +15,7 @@ promo/node_modules/
 promo/bundle/
 promo/out/
 promo/build_dev_*/
+# 音频产物（bgm 约 28MB，wav 可由脚本重建）：只留 TTS 源 mp3 与生成脚本
+promo/public/audio/
+promo/audio/*.wav
+promo/audio/_*

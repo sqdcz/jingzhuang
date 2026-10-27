@@ -262,13 +262,13 @@ const Malware: React.FC = () => {
 export const Pain: React.FC = () => {
   return (
     <Bg glow={C.warn} intensity={0.5}>
-      <Sequence from={0} durationInFrames={180}>
+      <Sequence from={0} durationInFrames={220}>
         <FakeSite />
       </Sequence>
-      <Sequence from={180} durationInFrames={180}>
+      <Sequence from={220} durationInFrames={220}>
         <Bundleware />
       </Sequence>
-      <Sequence from={360} durationInFrames={180}>
+      <Sequence from={440} durationInFrames={220}>
         <Malware />
       </Sequence>
     </Bg>

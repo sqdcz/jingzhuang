@@ -192,7 +192,7 @@ const Badge: React.FC<{ children: React.ReactNode; tone?: 'ok' | 'warn' | 'dange
 export const Chain: React.FC = () => {
   return (
     <Bg glow={C.green} intensity={0.62}>
-      <Sequence from={0} durationInFrames={300}>
+      <Sequence from={0} durationInFrames={380}>
         <ChainStep
           active={0}
           query="微信"
@@ -206,7 +206,7 @@ export const Chain: React.FC = () => {
         />
       </Sequence>
 
-      <Sequence from={300} durationInFrames={300}>
+      <Sequence from={380} durationInFrames={380}>
         <ChainStep
           active={1}
           query="curl"
@@ -221,7 +221,7 @@ export const Chain: React.FC = () => {
         />
       </Sequence>
 
-      <Sequence from={600} durationInFrames={300}>
+      <Sequence from={760} durationInFrames={380}>
         <ChainStep
           active={2}
           query="某个小众工具"

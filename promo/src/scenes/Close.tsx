@@ -137,13 +137,13 @@ const Outro: React.FC = () => {
 export const Close: React.FC = () => {
   return (
     <Bg glow={C.green} intensity={0.8}>
-      <Sequence from={0} durationInFrames={150}>
+      <Sequence from={0} durationInFrames={180}>
         <Privacy />
       </Sequence>
-      <Sequence from={150} durationInFrames={150}>
+      <Sequence from={180} durationInFrames={180}>
         <Download />
       </Sequence>
-      <Sequence from={300} durationInFrames={150}>
+      <Sequence from={360} durationInFrames={150}>
         <Outro />
       </Sequence>
     </Bg>
