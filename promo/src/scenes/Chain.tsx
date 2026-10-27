@@ -83,10 +83,10 @@ const ChainStep: React.FC<StepProps> = ({ active, query, rows, verdict, note }) 
   const showVerdict = f > 108
 
   return (
-    <AbsoluteFill style={{ flexDirection: 'row', gap: 54, padding: '96px 110px' }}>
+    <AbsoluteFill style={{ flexDirection: 'row', alignItems: 'center', gap: 54, padding: '0 110px' }}>
       <Rail active={active} f={f} />
 
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 22 }}>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 22, justifyContent: 'center' }}>
         <Reveal delay={0} y={16}>
           <Kicker>第 {active + 1} 级 · {RAIL[active].name}</Kicker>
         </Reveal>
